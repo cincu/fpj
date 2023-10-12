@@ -1,19 +1,19 @@
 import Link from "next/link";
-import styled from "styled-components";
 import Image from "next/image";
 import logo from "../images/logo_1.png";
-const Div = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-`;
+
 export default function Home() {
   return (
-    <Div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <Image src={logo} width={700} alt="Logo Png" />
-      <Link href="./contact-me">contact</Link>
-      <Link href="./works">works</Link>
-    </Div>
+      <Link style={{ display: "block" }} href="./contact-me">
+        contact
+      </Link>
+      <Link style={{ display: "block" }} href="./works">
+        works
+      </Link>
+    </div>
   );
 }
