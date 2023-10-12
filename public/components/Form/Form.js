@@ -1,6 +1,14 @@
-export default function Form() {
+export default function Form({ obSubmit }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+    event.target.reset();
+  }
   return (
     <form
+      onSubmit={handleSubmit}
       style={{
         display: "flex",
         flexDirection: "column",
