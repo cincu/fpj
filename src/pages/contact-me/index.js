@@ -1,16 +1,22 @@
 import Link from "next/link";
 import Form from "../../../public/components/Form/Form";
 import Disclaimer from "../../../public/components/Disclaimer/Disclaimer";
+import { useRouter } from "next/router";
 
 export default function AboutMePage() {
-  async function addAppointment(appointment) {
-    const response = await fetch(`/api/places`, {
+  const router = useRouter();
+  async function addAppointment(formData) {
+    const response = await fetch("/api/contact-me/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(appointment),
+      body: JSON.stringify({ formData }),
     });
+    console.log(formData);
     if (response.ok) {
+      alert("Form submit succesful");
       router.push("/");
+    } else {
+      alert("Try again");
     }
   }
   return (

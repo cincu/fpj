@@ -17,14 +17,7 @@ export default function Disclaimer() {
         mi congue.pls read <Link href="#">terms and conditions</Link> Nulla
         facilisi. Sed auctor, leo id tincidunt blandit, justo tortor imperdiet
         mauris, eu euismod tortor purus sit amet nunc. In hac habitasse platea
-        dictumst. Maecenas nec eros in purus euismod luctus. You can pay using
-        this
-        <Link href="https://www.paypal.com/paypalme/jumisu4u/100EUR">
-          {" "}
-          link
-        </Link>
-        . Your appointment request will only be considered after payment is
-        sent.
+        dictumst. Maecenas nec eros in purus euismod luctus.
       </p>
     </div>
   );
