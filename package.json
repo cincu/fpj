@@ -14,10 +14,12 @@
     "react": "^18",
     "react-dom": "^18",
     "styled": "^1.0.0",
-    "styled-components": "^6.0.8"
+    "styled-components": "^6.0.8",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^10",
+    "daisyui": "^3.9.2",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",

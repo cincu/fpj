@@ -1,13 +1,7 @@
 import Link from "next/link";
 export default function Disclaimer() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div className="container">
       <h2>Hi!</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget
