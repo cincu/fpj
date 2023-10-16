@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Form from "../../../public/components/Form/Form";
-import Disclaimer from "../../../public/components/Disclaimer/Disclaimer";
+import Form from "../../components/Form/Form";
+import Disclaimer from "../../components/Disclaimer/Disclaimer";
 import { useRouter } from "next/router";
 
 export default function AboutMePage() {
