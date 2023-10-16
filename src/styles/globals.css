@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 225, 226, 227;
+  --text-rgb: black;
   --background-rgb: 225, 226, 227;
   --primary-color: 225, 226, 227;
 }
@@ -28,6 +28,11 @@ body {
 } */
 .container {
   padding: 1rem;
+}
+.filterbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 fieldset {
   border: solid white 1px;
