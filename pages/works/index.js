@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CardsByCategory from "../../components/CardsByCategory/CardsByCategory";
 import useLocalStorageState from "use-local-storage-state";
 import useSWR from "swr";
@@ -10,38 +10,59 @@ export default function WorksPage() {
   const [selectedCategory, setSelectedCategory] = useLocalStorageState(
     "graphics",
     {
-      defaultValue: [],
+      defaultValue: "graphics",
     }
   );
-  const [images, setImages] = useState(data);
-  useEffect(() => {
-    const filteredImages = data.filter(
-      (image) => image.category === selectedCategory
-    );
-    setImages(filteredImages);
-  }, [selectedCategory, data]);
+  // State to track the currently selected button
+  const [activeButton, setActiveButton] = useState(selectedCategory);
+
+  // Function to handle button clicks and update the selected category
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setActiveButton(category);
+  };
+
+  const filteredImages = data
+    ? data.filter((image) => image.category === selectedCategory)
+    : [];
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   if (!data) return;
 
-  console.log(data);
-
-  // const [images, setImages] = useState([]);
-
-  // const initialImages = data.filter((image) => image.category === "graphics");
-
   return (
     <>
       <Link href="./">Back</Link>
-      <div className="filterbar">
-        <button onClick={() => setSelectedCategory("graphics")}>
+      <ul className="filterbar">
+        <button
+          className="button--navigation"
+          onClick={() => handleCategorySelect("graphics")}
+          style={
+            activeButton === "graphics" ? { backgroundColor: "blueviolet" } : {}
+          }
+        >
           graphics
         </button>
-        <button onClick={() => setSelectedCategory("tattoo")}>tattoos</button>
-        <button onClick={() => setSelectedCategory("items")}>items</button>
-      </div>
-      <CardsByCategory images={images} category={selectedCategory} />
+        <button
+          className="button--navigation"
+          onClick={() => handleCategorySelect("tattoo")}
+          style={
+            activeButton === "tattoo" ? { backgroundColor: "blueviolet" } : {}
+          }
+        >
+          tattoos
+        </button>
+        <button
+          className="button--navigation"
+          onClick={() => handleCategorySelect("items")}
+          style={
+            activeButton === "items" ? { backgroundColor: "blueviolet" } : {}
+          }
+        >
+          items
+        </button>
+      </ul>
+      <CardsByCategory images={filteredImages} category={selectedCategory} />
     </>
   );
 }

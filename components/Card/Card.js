@@ -1,10 +1,18 @@
+import { useState } from "react";
 export default function Card({ image }) {
+  const handleCopyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(image._id);
+      alert("Image ID copied to clipboard.");
+    } catch (error) {
+      console.error("Unable to copy to clipboard:", error);
+    }
+  };
   return (
-    <div className={`detail card-${image.category}`}>
+    <div className="card--container">
       <img
         alt={`image is called ${image.title}`}
-        width={300}
-        height={200}
+        width={250}
         src={image.imageUrl}
       />
       <h2>{image.title}</h2>
@@ -14,19 +22,24 @@ export default function Card({ image }) {
         <>
           <p>{image.dateOfTattoo}</p>
           <p>{image.durationOfTattoo}</p>
+          <div className="buttons--container">
+            <button>appreciate</button>
+            <button id={image._id} onClick={handleCopyToClipboard}>
+              reference
+            </button>
+          </div>
         </>
       )}
 
-      {image.category === "item" && (
+      {image.category === "items" && (
         <>
-          <button href="./basket-page">add to the basket</button>
-          <button href="./payment-page">order now</button>
-          <p>{image.price}</p>
+          <p>Price : {image.price}</p>
+          <div className="buttons--container">
+            <button href="./basket-page">add2basket</button>
+            <button href="./payment-page">order now</button>
+          </div>
         </>
       )}
-
-      <button id={image._id}>reference</button>
-      <button>appreciate</button>
     </div>
   );
 }
