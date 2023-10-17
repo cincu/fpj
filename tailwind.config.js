@@ -14,8 +14,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
-    thesmes: ["light, cyberpunk, wireframe, acid"],
+    themes: ["light, cyberpunk, wireframe, acid"],
   },
 };

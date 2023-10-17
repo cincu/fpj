@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --text-rgb: black;
+  --text-rgb: blueviolet;
   --background-rgb: 225, 226, 227;
   --primary-color: 225, 226, 227;
 }
@@ -17,7 +17,7 @@
 } */
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--text-rgb));
   background-color: var(--background-rgb);
   margin: 1rem;
 }
@@ -35,9 +35,9 @@ body {
   justify-content: space-around;
 }
 fieldset {
-  border: solid white 1px;
+  border: solid blueviolet 1px;
   margin: 1rem;
-  border-radius: 1rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem blueviolet;
   padding: 2rem;
   display: flex;
   flex-direction: column;
