@@ -1,10 +1,16 @@
 import Card from "../../../components/Card/Card";
-import { useRouter } from "next/router";
 import useSWR from "swr";
-export default function WorksDetailsPage({}) {
+import { useRouter } from "next/router";
+export default function WorksDetailsPage() {
   const router = useRouter();
   const { id } = router.query;
-  const image = useSWR(`/api/works/${id}`, []);
-  console.log(image);
-  return <h2>{image.title} </h2>;
+  console.log(router.query.id);
+
+  const { data, error, isLoading } = useSWR("/api/works", { fallbackData: [] });
+  const currentImage = data.find((image) => image._id === id);
+  console.log(currentImage);
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+  if (!currentImage) return;
+  return <Card image={currentImage} />;
 }
