@@ -1,6 +1,7 @@
 import Card from "../../../components/Card/Card";
 import useSWR from "swr";
 import { useRouter } from "next/router";
+import Link from "next/link";
 export default function WorksDetailsPage() {
   const router = useRouter();
   const { id } = router.query;
@@ -12,5 +13,10 @@ export default function WorksDetailsPage() {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   if (!currentImage) return;
-  return <Card image={currentImage} />;
+  return (
+    <>
+      <Link href="./">Back</Link>
+      <Card image={currentImage} />
+    </>
+  );
 }
