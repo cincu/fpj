@@ -62,7 +62,7 @@ export default function WorksPage() {
           items
         </button>
       </ul>
-      <CardsByCategory images={filteredImages} category={selectedCategory} />
+      <CardsByCategory images={filteredImages} />
     </>
   );
 }
