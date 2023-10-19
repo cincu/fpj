@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "./globals.css";
 import { SWRConfig } from "swr";
 
 export default function App({ Component, pageProps }) {
