@@ -6,7 +6,7 @@ export default async function handler(request, response) {
   const { id } = request.query;
 
   if (request.method === "GET") {
-    const works = await Work.findById(id);
+    const works = await Work.findOne({ _id: id });
 
     if (!works) {
       return response.status(404).json({ status: "Not Found" });
