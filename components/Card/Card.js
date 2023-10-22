@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-
+import Link from "next/link";
 export default function Card({ image }) {
   const handleCopyToClipboard = async () => {
     try {
@@ -35,8 +35,10 @@ export default function Card({ image }) {
         <div className="item--container">
           <p>Price : {image.price}</p>
           <div className="buttons--container">
-            <button href="./basket-page">add2basket</button>
-            <button href="./payment-page">order now</button>
+            <Link href="./cart">
+              <button>add2basket</button>
+            </Link>
+            <Link href="/payment">order now </Link>
           </div>
         </div>
       )}
