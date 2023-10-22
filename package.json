@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^4.1.0",
     "mongoose": "^7.6.2",
     "next": "13.5.4",
     "nodemailer": "^6.9.6",
