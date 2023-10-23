@@ -1,6 +1,6 @@
 import "./globals.css";
 import { SWRConfig } from "swr";
-
+import SessionProvider from "next-auth/react";
 export default function App({ Component, pageProps }) {
   return (
     <SWRConfig
