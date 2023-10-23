@@ -8,12 +8,12 @@ export default function WorksPage() {
   const { data, error, isLoading } = useSWR("/api/works", { fallbackData: [] });
 
   const [selectedCategory, setSelectedCategory] = useLocalStorageState(
-    "graphics",
+    "category",
     {
       defaultValue: "graphics",
     }
   );
-  // State to track the currently selected button
+  // state to track the currently selected button
   const [activeButton, setActiveButton] = useState(selectedCategory);
 
   // Function to handle button clicks and update the selected category
