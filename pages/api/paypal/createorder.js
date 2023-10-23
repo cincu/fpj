@@ -1,4 +1,4 @@
-import client from "backend/paypal";
+import client from "../../../utils/paypal";
 import paypal from "@paypal/checkout-server-sdk";
 import Order from "../../../db/models/Order";
 
