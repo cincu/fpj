@@ -3,10 +3,8 @@ import { useState } from "react";
 import CardsByCategory from "../../components/CardsByCategory/CardsByCategory";
 import useLocalStorageState from "use-local-storage-state";
 import useSWR from "swr";
-
 export default function WorksPage() {
   const { data, error, isLoading } = useSWR("/api/works", { fallbackData: [] });
-
   const [selectedCategory, setSelectedCategory] = useLocalStorageState(
     "category",
     {

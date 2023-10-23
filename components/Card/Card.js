@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import Link from "next/link";
+
 export default function Card({ image }) {
   const handleCopyToClipboard = async () => {
     try {
@@ -8,6 +9,21 @@ export default function Card({ image }) {
       alert("Image title copied to clipboard.");
     } catch (error) {
       console.error("Unable to copy to clipboard:", error);
+    }
+  };
+  const handleAppreciate = async () => {
+    try {
+      await fetch("/api/send-appreciation", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ imageTitle: image.title }),
+      });
+      alert("Appreciation mail sent successfully");
+    } catch (error) {
+      console.error("unable to send the mail");
+      alert("unable to send the mail");
     }
   };
 
@@ -23,7 +39,13 @@ export default function Card({ image }) {
           <p>{image.dateOfTattoo}</p>
           <p>{image.durationOfTattoo}</p>
           <div className="buttons--container">
-            <button>appreciate</button>
+            <button
+              action="canancansucaner@gmail.com"
+              method="post"
+              onClick={handleAppreciate}
+            >
+              appreciate
+            </button>
             <button id={image.title} onClick={handleCopyToClipboard}>
               reference
             </button>

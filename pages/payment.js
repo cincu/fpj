@@ -1,5 +1,5 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
+import axios from "axios";
 export default function paymentPage() {
   async function paypalCreateOrder(price) {
     try {
