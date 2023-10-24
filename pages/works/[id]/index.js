@@ -2,14 +2,34 @@ import Card from "../../../components/Card/Card";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import EditForm from "../../../components/EditForm";
+
 export default function WorksDetailsPage() {
   const router = useRouter();
   const { id } = router.query;
   console.log(router.query.id);
 
-  const { data, error, isLoading } = useSWR("/api/works", { fallbackData: [] });
+  const { data, error, isLoading, mutate } = useSWR("/api/works", {
+    fallbackData: [],
+  });
   const currentImage = data.find((image) => image._id === id);
   console.log(currentImage);
+
+  async function editWork(currentImage) {
+    const response = await fetch(`/api/works/${id}`, {
+      method: "PUT",
+      headers: {
+        "Constent-Type": "application/json",
+      },
+      body: JSON.stringify(currentImage),
+    });
+    if (response.ok) {
+      mutate(), router.push("/works");
+    } else {
+      console.log(`Error: ${response.status}`);
+    }
+    console.log("work edited ?");
+  }
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   if (!currentImage) return;
@@ -17,6 +37,12 @@ export default function WorksDetailsPage() {
     <>
       <Link href="./">Back</Link>
       <Card image={currentImage} />
+      {/* if user is admin render: */}
+      <EditForm
+        onSubmit={editWork}
+        formName={"edit-work"}
+        defaultData={currentImage}
+      />
     </>
   );
 }

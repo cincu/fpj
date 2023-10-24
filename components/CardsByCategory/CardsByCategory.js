@@ -7,6 +7,10 @@ export default function CardsByCategory({ images }) {
           <Link href={`/works/${image._id}`} key={index} image={image}>
             <img alt={image.title} width={250} src={image.imageUrl} />
           </Link>
+          <div className="container--admin">
+            <button className="crud button--add">+</button>
+            <button className="crud button--delete">-</button>
+          </div>
         </>
       ))}
     </div>

@@ -13,4 +13,19 @@ export default async function handler(request, response) {
     }
     response.status(200).json(works);
   }
+  //editing the piece
+
+  if (request.method === "PUT") {
+    try {
+      console.log(`request-body: ${request.body}`);
+      console.log(`id: ${id}`);
+      const work = await Work.findByIdAndUpdate(id, request.body, {
+        new: true,
+      });
+      console.log(work);
+      response.status(201).json({ status: `Work ${id} updated!` });
+    } catch (error) {
+      console.log(`Error updating the work!${error}`);
+    }
+  }
 }

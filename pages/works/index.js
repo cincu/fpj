@@ -1,16 +1,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import CardsByCategory from "../../components/CardsByCategory/CardsByCategory";
-import useLocalStorageState from "use-local-storage-state";
+// import useLocalStorageState from "use-local-storage-state";
 import useSWR from "swr";
 export default function WorksPage() {
   const { data, error, isLoading } = useSWR("/api/works", { fallbackData: [] });
-  const [selectedCategory, setSelectedCategory] = useLocalStorageState(
-    "category",
-    {
-      defaultValue: "graphics",
-    }
-  );
+  const [selectedCategory, setSelectedCategory] = useState("graphics"); // Set the initial state to "graphics"
+
   // state to track the currently selected button
   const [activeButton, setActiveButton] = useState(selectedCategory);
 
