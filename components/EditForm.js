@@ -22,12 +22,34 @@ export default function EditForm({ onSubmit, defaultData, formName }) {
         type="text"
         defaultValue={defaultData?.title}
       />
+
       <label htmlFor="price">price</label>
       <input
         id="price"
         name="price"
         type="text"
         defaultValue={defaultData?.price}
+      />
+      <label htmlFor="availableForms">available forms:</label>
+      <input
+        id="availableForms"
+        name="availableForms"
+        type="text"
+        defaultValue={defaultData?.availableForms}
+      />
+      <label htmlFor="category">category/:graphics/tattoos/items</label>
+      <input
+        id="category"
+        name="category"
+        type="text"
+        defaultValue={defaultData?.category}
+      />
+      <label htmlFor="dateOfTattoo">date of tattoo:</label>
+      <input
+        id="dateOfTattoo"
+        name="dateOfTattoo"
+        type="text"
+        defaultValue={defaultData?.dateOfTattoo}
       />
       <button type="submit">submit</button>
     </form>

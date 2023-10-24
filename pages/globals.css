@@ -150,11 +150,16 @@ legend {
   border: 2px solid var(--accent);
 }
 /* USER STORY ADMIN*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
+.card--card {
+  position: relative;
+}
 .container--admin {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .crud {
@@ -164,5 +169,6 @@ legend {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(196, 196, 196);
+  box-shadow: 3px 3px 1px blueviolet;
+  background-color: white;
 }

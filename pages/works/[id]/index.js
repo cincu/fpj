@@ -19,7 +19,7 @@ export default function WorksDetailsPage() {
     const response = await fetch(`/api/works/${id}`, {
       method: "PUT",
       headers: {
-        "Constent-Type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(currentImage),
     });
