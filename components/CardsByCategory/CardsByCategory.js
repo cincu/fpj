@@ -1,4 +1,3 @@
-import Card from "../Card/Card";
 import Link from "next/link";
 export default function CardsByCategory({ images }) {
   return (

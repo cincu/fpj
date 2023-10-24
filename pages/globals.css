@@ -31,7 +31,7 @@ button {
   padding: 0.8rem;
   border-radius: 0.5rem;
   width: 6rem;
-  background-color: none;
+  background-color: grey;
   border: none;
 }
 .title--home {

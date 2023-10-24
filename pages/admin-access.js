@@ -15,7 +15,10 @@ export default function AdminEmailAuth() {
   }
   return (
     <>
-      <button className={`${btn} ${login}`} onClick={() => signIn()}>
+      <button
+        className={`${btn} ${login}`}
+        onClick={() => signIn("google", { callbackUrl: "/works" })}
+      >
         Verify
       </button>
     </>
