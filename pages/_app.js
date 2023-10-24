@@ -1,6 +1,6 @@
 import "./globals.css";
 import { SWRConfig } from "swr";
-import { SessionProvider } from "next-auth/react";
+import { RouteGuard } from "../components/RouteGuard";
 export default function App({ Component, pageProps }) {
   return (
     <SWRConfig
@@ -14,9 +14,9 @@ export default function App({ Component, pageProps }) {
         },
       }}
     >
-      <SessionProvider session={pageProps.session}>
+      <RouteGuard session={pageProps.session}>
         <Component {...pageProps} />
-      </SessionProvider>
+      </RouteGuard>
     </SWRConfig>
   );
 }

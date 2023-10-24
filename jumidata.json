@@ -1,5 +1,12 @@
 [
   {
+    "username": "test",
+    "password": "testxxx"
+  }]
+
+
+[
+  {
     "title": "Bunny from Behind",
     "price": "15€",
     "dateOfTattoo": "",
