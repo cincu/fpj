@@ -2,21 +2,21 @@ import Link from "next/link";
 import { useState } from "react";
 import CardsByCategory from "../../components/CardsByCategory/CardsByCategory";
 import EditForm from "../../components/EditForm";
+import { useSession } from "next-auth/react";
+
 // import useLocalStorageState from "use-local-storage-state";
 import useSWR from "swr";
 export default function WorksPage() {
   const { data, error, isLoading } = useSWR("/api/works", { fallbackData: [] });
-  const [selectedCategory, setSelectedCategory] = useState("graphics"); // Set the initial state to "graphics"
+  const { data: session } = useSession();
+  console.log(session);
+  // Set the initial state to "graphics"
+  const [selectedCategory, setSelectedCategory] = useState("graphics");
 
+  //state for the add form visibility
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    setInput1("");
-    setInput2("");
-    setIsFormVisible(false);
-  };
+
+  //add form submit
   async function addWork(id) {
     const response = await fetch(`/api/works/${id}`, {
       method: "POST",
@@ -75,15 +75,17 @@ export default function WorksPage() {
         >
           items
         </button>
-        <button
-          onClick={() => setIsFormVisible((prev) => !prev)} // Show the form on button click
-          type="button"
-          className="crud button--add"
-        >
-          +
-        </button>
+        {session && (
+          <button
+            onClick={() => setIsFormVisible((prev) => !prev)} // Show the form on button click
+            type="button"
+            className="crud button--add"
+          >
+            +
+          </button>
+        )}
       </ul>
-      {isFormVisible && <EditForm />}
+      {isFormVisible && <EditForm onSubmit={addWork} />}
       <CardsByCategory images={filteredImages} />
     </>
   );

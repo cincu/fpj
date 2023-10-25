@@ -60,7 +60,7 @@ export default function Card({ image }) {
             <Link href="./cart">
               <button>add2basket</button>
             </Link>
-            <Link href="/payment">order now </Link>
+            <Link href="/payment-page">order now </Link>
           </div>
         </div>
       )}

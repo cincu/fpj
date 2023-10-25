@@ -1,12 +1,18 @@
 import { signOut, signIn, useSession } from "next-auth/react";
 import { btn, logout, login } from "../components/Login/AuthButton.module.css";
-
+import Link from "next/link";
 export default function AdminEmailAuth() {
-  const { data: session, user } = useSession();
+  const { data: session } = useSession();
+  console.log(session);
 
-  if (session && user === "admin") {
+  if (session) {
     return (
       <>
+        <h2>successful login admin</h2>
+        <h4>
+          you can direct <Link href="/works">here</Link> to ADD, DELETE, EDIT
+          works
+        </h4>
         <button className={`${btn} ${logout}`} onClick={() => signOut()}>
           Sign out
         </button>
@@ -15,10 +21,7 @@ export default function AdminEmailAuth() {
   }
   return (
     <>
-      <button
-        className={`${btn} ${login}`}
-        onClick={() => signIn("google", { callbackUrl: "/works" })}
-      >
+      <button className={`${btn} ${login}`} onClick={() => signIn()}>
         Verify
       </button>
     </>

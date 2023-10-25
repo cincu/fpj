@@ -21,7 +21,7 @@ export default async function handler(request, response) {
       purchase_units: [
         {
           amount: {
-            currency_code: "USD",
+            currency_code: "EUR",
             value: request.body.order_price + "",
           },
         },
@@ -35,16 +35,18 @@ export default async function handler(request, response) {
         .json({ success: false, message: "Some Error Occured at backend" });
     }
 
-    //store the order in mongodb
-    const order = new Order({
-      user_id: request.body.user_id,
-      order_price: parseFloat(request.body.order_price),
-      order_id: createOrderResponse.result.id,
-    });
-    await order.save();
+    // //store the order in mongodb
+    // const order = new Order({
+    //   user_id: request.body.user_id,
+    //   order_price: parseFloat(request.body.order_price),
+    //   order_id: createOrderResponse.result.id,
+    // });
+    // await order.save();
+    // //check above
+
     response.status(200).json({ success: true, data: { order } });
   } catch (err) {
-    console.log("Err at Create Order: ", err);
+    console.log("Error at Create Order: ", err);
     return response
       .status(500)
       .json({ success: false, message: "Could Not Found the user" });

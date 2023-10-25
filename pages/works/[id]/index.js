@@ -3,9 +3,12 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import EditForm from "../../../components/EditForm";
+import { useSession } from "next-auth/react";
 
 export default function WorksDetailsPage() {
   const router = useRouter();
+  const { data: session } = useSession();
+
   const { id } = router.query;
   console.log(router.query.id);
 
@@ -38,11 +41,13 @@ export default function WorksDetailsPage() {
       <Link href="./">Back</Link>
       <Card image={currentImage} />
       {/* if user is admin render: */}
-      <EditForm
-        onSubmit={editWork}
-        formName={"edit-work"}
-        defaultData={currentImage}
-      />
+      {session && (
+        <EditForm
+          onSubmit={editWork}
+          formName={"edit-work"}
+          defaultData={currentImage}
+        />
+      )}
     </>
   );
 }

@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function CardsByCategory({ images }) {
   const router = useRouter();
+  const { data: session } = useSession();
 
   async function deleteWork(id) {
     await fetch(`/api/works/${id}`, {
@@ -20,13 +22,15 @@ export default function CardsByCategory({ images }) {
             <img alt={image.title} width={250} src={image.imageUrl} />
           </Link>
           <div className="container--admin">
-            <button
-              onClick={() => deleteWork(image._id)}
-              type="button"
-              className="crud button--delete"
-            >
-              -
-            </button>
+            {session && (
+              <button
+                onClick={() => deleteWork(image._id)}
+                type="button"
+                className="crud button--delete"
+              >
+                -
+              </button>
+            )}
           </div>
         </div>
       ))}
