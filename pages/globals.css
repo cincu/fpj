@@ -77,11 +77,13 @@ legend {
 .filterbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  margin-bottom: 5rem;
 }
 
 .cards--container {
   height: 50rem;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -146,4 +148,27 @@ legend {
   background-color: var(--primary-dark);
   color: var(--accent);
   border: 2px solid var(--accent);
+}
+/* USER STORY ADMIN*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
+.card--card {
+  position: relative;
+}
+.container--admin {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.crud {
+  border-radius: 3rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 1px blueviolet;
+  background-color: white;
 }

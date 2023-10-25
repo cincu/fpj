@@ -1,13 +1,34 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
 export default function CardsByCategory({ images }) {
+  const router = useRouter();
+
+  async function deleteWork(id) {
+    await fetch(`/api/works/${id}`, {
+      method: "DELETE",
+    });
+    router.push("/");
+  }
+
   return (
     <div className="cards--container">
-      {images.map((image, index) => (
-        <>
-          <Link href={`/works/${image._id}`} key={index} image={image}>
+      {images.map((image) => (
+        <div className="card--card" key={image.id}>
+          <Link href={`/works/${image._id}`} image={image}>
             <img alt={image.title} width={250} src={image.imageUrl} />
           </Link>
-        </>
+          <div className="container--admin">
+            <button
+              onClick={() => deleteWork(image._id)}
+              type="button"
+              className="crud button--delete"
+            >
+              -
+            </button>
+          </div>
+        </div>
       ))}
     </div>
   );

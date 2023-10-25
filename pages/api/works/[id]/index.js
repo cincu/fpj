@@ -13,4 +13,27 @@ export default async function handler(request, response) {
     }
     response.status(200).json(works);
   }
+  //editing the work
+  if (request.method === "PUT") {
+    try {
+      console.log(`request-body: ${request.body}`);
+      await Work.findByIdAndUpdate(id, request.body);
+      response.status(201).json({ status: `Work ${id} updated!` });
+    } catch (error) {
+      console.log(`Error updating the work!${error}`);
+    }
+  }
+  //deleting the work
+  if (request.method === "DELETE") {
+    console.log(`id is here : ${id}`);
+    await Work.findByIdAndDelete(id);
+    return response
+      .status(200)
+      .json({ status: `Work ${id} succesfully deleted!` });
+  }
+  //adding the piece
+  if (request.method === "POST") {
+    const newWork = await Work.create(request.body);
+    return response.status(200).json(newWork);
+  }
 }

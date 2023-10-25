@@ -1,16 +1,32 @@
 import Link from "next/link";
 import { useState } from "react";
 import CardsByCategory from "../../components/CardsByCategory/CardsByCategory";
-import useLocalStorageState from "use-local-storage-state";
+import EditForm from "../../components/EditForm";
+// import useLocalStorageState from "use-local-storage-state";
 import useSWR from "swr";
 export default function WorksPage() {
   const { data, error, isLoading } = useSWR("/api/works", { fallbackData: [] });
-  const [selectedCategory, setSelectedCategory] = useLocalStorageState(
-    "category",
-    {
-      defaultValue: "graphics",
+  const [selectedCategory, setSelectedCategory] = useState("graphics"); // Set the initial state to "graphics"
+
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [input1, setInput1] = useState("");
+  const [input2, setInput2] = useState("");
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    setInput1("");
+    setInput2("");
+    setIsFormVisible(false);
+  };
+  async function addWork(id) {
+    const response = await fetch(`/api/works/${id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(id),
+    });
+    if (response.ok) {
+      router.push("/");
     }
-  );
+  }
   // state to track the currently selected button
   const [activeButton, setActiveButton] = useState(selectedCategory);
 
@@ -59,7 +75,15 @@ export default function WorksPage() {
         >
           items
         </button>
+        <button
+          onClick={() => setIsFormVisible((prev) => !prev)} // Show the form on button click
+          type="button"
+          className="crud button--add"
+        >
+          +
+        </button>
       </ul>
+      {isFormVisible && <EditForm />}
       <CardsByCategory images={filteredImages} />
     </>
   );
