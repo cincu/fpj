@@ -8,13 +8,13 @@ export default async function handler(request, response) {
       port: 465,
       secure: true,
       auth: {
-        user: "canancansucaner@gmail.com",
+        user: process.env.SENDER_MAIL,
         pass: "onnd ydxr iahs ytxa",
       },
     });
     const mailOptions = {
-      from: "canancansucaner@gmail.com",
-      to: "julianmitz@gmail.com",
+      from: process.env.SENDER_MAIL,
+      to: process.env.RECEIVER_MAIL,
       subject: "submitted form data, payment information missing",
       html: `
       <h1>Tattoo Appointment Info</h1>

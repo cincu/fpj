@@ -12,7 +12,7 @@ export default function Form({ onSubmit }) {
   return (
     <div className="container">
       <form
-        action="canancansucaner@gmail.com"
+        action={process.env.SENDER_MAIL}
         method="post"
         onSubmit={handleSubmit}
       >

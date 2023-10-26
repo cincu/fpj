@@ -4,10 +4,12 @@ import clientPromise from "../../../db/clientPromise";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import User from "../../../db/models/User";
 import dbConnect from "../../../db/connect";
+import hashedPassword from "../../../utils/hash";
+
 export const authOptions = {
   providers: [
     CredentialsProvider({
-      name: "Me",
+      name: "credentials",
       credentials: {
         username: { label: "Username", type: "text", placeholder: "admin" },
         password: { label: "Password", type: "password" },
@@ -16,9 +18,8 @@ export const authOptions = {
       async authorize(credentials, req) {
         await dbConnect();
         if (!credentials.username || !credentials.password) {
-          return null;
+          return error;
         }
-
         const user = await User.findOne({
           username: credentials.username,
           password: credentials.password,
@@ -29,17 +30,19 @@ export const authOptions = {
         if (user) {
           return user;
         } else {
-          return null;
+          return error;
         }
       },
     }),
   ],
   session: {
     strategy: "jwt",
+    maxAge: 2 * 24 * 60 * 60, // 2 days
+    updateAge: 24 * 60 * 60, //24 hours
   },
   pages: {
-    signOut: "/admin-access",
-    error: "/",
+    signOut: "/superficial-secret-access",
+    error: "/error",
   },
   debug: true,
   adapter: MongoDBAdapter(clientPromise),
