@@ -3,7 +3,11 @@ import axios from "axios";
 export default function PaymentPage() {
   async function paypalCreateOrder() {
     try {
-      let response = await axios.post("/api/paypal/createorder", {
+      const response = await axios.post("/api/paypal/createorder/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         user_id: store.getState().auth.user._id,
         order_price: amountRef.current.value,
       });
@@ -16,7 +20,7 @@ export default function PaymentPage() {
 
   async function paypalCaptureOrder(orderID) {
     try {
-      let response = await axios.post("/api/paypal/captureorder", {
+      let response = await axios.post("/api/paypal/captureorder/", {
         orderID,
       });
       if (response.data.success) {

@@ -8,7 +8,7 @@ export default function CardsByCategory({ images }) {
   const { data: session } = useSession();
 
   async function deleteWork(id) {
-    await fetch(`/api/works/${id}`, {
+    await fetch(`/api/collection/${id}`, {
       method: "DELETE",
     });
     router.push("/");
@@ -18,7 +18,7 @@ export default function CardsByCategory({ images }) {
     <div className="cards--container">
       {images.map((image) => (
         <div className="card--card" key={image.id}>
-          <Link href={`/works/${image._id}`} image={image}>
+          <Link href={`/collection/${image._id}`} image={image}>
             <img alt={image.title} width={250} src={image.imageUrl} />
           </Link>
           <div className="container--admin">

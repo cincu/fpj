@@ -7,7 +7,9 @@ import { useSession } from "next-auth/react";
 // import useLocalStorageState from "use-local-storage-state";
 import useSWR from "swr";
 export default function WorksPage() {
-  const { data, error, isLoading } = useSWR("/api/works", { fallbackData: [] });
+  const { data, error, isLoading } = useSWR("/api/collection", {
+    fallbackData: [],
+  });
   const { data: session } = useSession();
   console.log(session);
   // Set the initial state to "graphics"
@@ -18,7 +20,7 @@ export default function WorksPage() {
 
   //add form submit
   async function addWork(id) {
-    const response = await fetch(`/api/works/${id}`, {
+    const response = await fetch(`/api/collection/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(id),

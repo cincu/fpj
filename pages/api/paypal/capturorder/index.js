@@ -1,4 +1,4 @@
-import client from "../../../utils/paypal";
+import client from "../../../../utils/paypal";
 import paypal from "@paypal/checkout-server-sdk";
 
 export default async function handler(req, res) {

@@ -20,7 +20,7 @@ export default function Card({ image }) {
         },
         body: JSON.stringify({ imageTitle: image.title }),
       });
-      alert("Appreciation mail sent successfully");
+      alert("Appreciation sent to creator!");
     } catch (error) {
       console.error("unable to send the mail");
       alert("unable to send the mail");
@@ -40,7 +40,7 @@ export default function Card({ image }) {
           <p>{image.durationOfTattoo}</p>
           <div className="buttons--container">
             <button
-              action="canancansucaner@gmail.com"
+              action={process.env.SENDER_MAIL}
               method="post"
               onClick={handleAppreciate}
             >

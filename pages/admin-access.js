@@ -10,8 +10,8 @@ export default function AdminEmailAuth() {
       <>
         <h2>successful login admin</h2>
         <h4>
-          you can direct <Link href="/works">here</Link> to ADD, DELETE, EDIT
-          works
+          you can direct <Link href="/collection">here</Link> to ADD, DELETE,
+          EDIT works
         </h4>
         <button className={`${btn} ${logout}`} onClick={() => signOut()}>
           Sign out
