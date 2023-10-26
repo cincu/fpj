@@ -3,20 +3,23 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import EditForm from "../../../components/EditForm";
+import { useSession } from "next-auth/react";
 
 export default function WorksDetailsPage() {
   const router = useRouter();
+  const { data: session } = useSession();
+
   const { id } = router.query;
   console.log(router.query.id);
 
-  const { data, error, isLoading, mutate } = useSWR("/api/works", {
+  const { data, error, isLoading, mutate } = useSWR("/api/collection", {
     fallbackData: [],
   });
   const currentImage = data.find((image) => image._id === id);
   console.log(currentImage);
 
   async function editWork(currentImage) {
-    const response = await fetch(`/api/works/${id}`, {
+    const response = await fetch(`/api/collection/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +27,7 @@ export default function WorksDetailsPage() {
       body: JSON.stringify(currentImage),
     });
     if (response.ok) {
-      mutate(), router.push("/works");
+      mutate(), router.push("/collection");
     } else {
       console.log(`Error: ${response.status}`);
     }
@@ -38,11 +41,13 @@ export default function WorksDetailsPage() {
       <Link href="./">Back</Link>
       <Card image={currentImage} />
       {/* if user is admin render: */}
-      <EditForm
-        onSubmit={editWork}
-        formName={"edit-work"}
-        defaultData={currentImage}
-      />
+      {session && (
+        <EditForm
+          onSubmit={editWork}
+          formName={"edit-work"}
+          defaultData={currentImage}
+        />
+      )}
     </>
   );
 }

@@ -10,10 +10,10 @@ export default function Home() {
       <Image src={logo} width={700} alt="Logo Png" />
       <div className="container--home">
         <Link className="title--home" href="./contact-me">
-          contact
+          booking
         </Link>
-        <Link className="title--home" href="./works">
-          works
+        <Link className="title--home" href="./collection">
+          collection
         </Link>
       </div>
     </div>

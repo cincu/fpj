@@ -1,7 +1,7 @@
-import client from "backend/paypal";
+import client from "../../../../utils/paypal";
 import paypal from "@paypal/checkout-server-sdk";
 
-export default async function Handler(req, res) {
+export default async function handler(req, res) {
   if (req.method != "POST")
     return res.status(404).json({ success: false, message: "Not Found" });
 
