@@ -7,17 +7,27 @@
   --title-font: "Audiowide", sans-serif;
   --text-font: "Jura", sans-serif;
 }
-/* font-family: 'Audiowide', sans-serif;
-font-family: 'Dosis', sans-serif;
-font-family: 'Jura', sans-serif;
-font-family: 'Orbitron', sans-serif;
-font-family: 'Pixelify Sans', sans-serif;
-font-family: 'Source Code Pro', monospace; */
 
+.div--navigation {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.navigation--links {
+  text-decoration: none;
+  color: var(--text-contrast-color);
+  font-family: var(--title-font);
+}
 body {
+  font-size: 1.2rem;
+  display: flex;
   background-color: var(--background-color);
-  margin: 3rem 1rem 1rem 1rem;
+  margin: 0;
+  padding: 0;
   font-family: var(--text-font);
+  align-items: center;
 }
 h2 {
   color: var(--primary-color);
@@ -34,19 +44,25 @@ button {
   background-color: grey;
   border: none;
 }
+
+/* USER STORY 0 ENTRANCE PAGE*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
+.logo {
+  padding-top: 12rem;
+}
 .title--home {
   font-family: var(--title-font);
   text-decoration: none;
-  font-size: 18px;
+  font-size: 2rem;
   color: var(--text-color);
 }
-.container--home {
+.div--home {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  gap: 3rem;
 }
-
 /* USER STORY 1 FORM*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 form {
   display: flex;
@@ -54,7 +70,7 @@ form {
   gap: 1rem;
 }
 .container {
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -138,17 +154,6 @@ legend {
   opacity: 1;
 }
 
-.login {
-  background-color: var(--accent);
-  color: var(--primary-dark);
-  border: 2px solid var(--primary-dark);
-}
-
-.logout {
-  background-color: var(--primary-dark);
-  color: var(--accent);
-  border: 2px solid var(--accent);
-}
 /* USER STORY ADMIN*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 .card--card {
   position: relative;
@@ -171,4 +176,77 @@ legend {
   justify-content: center;
   box-shadow: 3px 3px 1px blueviolet;
   background-color: white;
+}
+.div--center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* login buttons */
+.login {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.login span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.login span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.login:hover span {
+  padding-right: 25px;
+}
+
+.login:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.div--center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (min-width: 601px) {
+  body {
+    justify-content: center;
+    margin: 0rem 6rem 6rem 6rem;
+  }
+  fieldset {
+    width: 60rem;
+  }
+  .title--home {
+    font-size: 1.2rem;
+  }
+  .logo {
+    padding-top: 5rem;
+  }
 }
