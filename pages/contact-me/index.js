@@ -1,8 +1,7 @@
-import Link from "next/link";
-import Form from "../../components/Form/Form";
-import Disclaimer from "../../components/Disclaimer/Disclaimer";
+import Form from "@/components/Form/Form";
+import Disclaimer from "@/components/Disclaimer/Disclaimer";
 import { useRouter } from "next/router";
-import Navigation from "../../components/Navigation/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 
 export default function AboutMePage() {
   const router = useRouter();

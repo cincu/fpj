@@ -1,10 +1,9 @@
-import Card from "../../../components/Card/Card";
+import Card from "@/components/Card/Card";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import EditForm from "../../../components/EditForm";
+import EditForm from "@/components/EditForm";
 import { useSession } from "next-auth/react";
-import Navigation from "../../../components/Navigation/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 
 export default function WorksDetailsPage() {
   const router = useRouter();

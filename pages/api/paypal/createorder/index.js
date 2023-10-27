@@ -1,6 +1,6 @@
-import client from "../../../utils/paypal";
+import client from "@/utils/paypal";
 import paypal from "@paypal/checkout-server-sdk";
-import Order from "../../../db/models/Order";
+import Order from "@/db/models/Order";
 
 export default async function handler(request, response) {
   if (request.method != "POST")
