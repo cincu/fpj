@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useState } from "react";
 import CardsByCategory from "../../components/CardsByCategory/CardsByCategory";
 import EditForm from "../../components/EditForm";
@@ -15,7 +14,7 @@ export default function WorksPage() {
   });
   const { data: session } = useSession();
   console.log(session);
-  // Set the initial state to "graphics"
+  // set the initial state to "graphics"
   const [selectedCategory, setSelectedCategory] = useState("graphics");
 
   //state for the add form visibility
