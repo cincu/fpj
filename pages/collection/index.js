@@ -3,10 +3,10 @@ import CardsByCategory from "@/components/CardsByCategory/CardsByCategory";
 import EditForm from "@/components/EditForm";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import Navigation from "@/components/Navigation/Navigation";
 
 // import useLocalStorageState from "use-local-storage-state";
 import useSWR from "swr";
+import Navigation from "@/components/Navigation/Navigation";
 export default function WorksPage() {
   const router = useRouter();
   const { data, error, isLoading } = useSWR("/api/collection", {

@@ -1,5 +1,5 @@
-import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Navigation from "@/components/Navigation/Navigation";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 import axios from "axios";
 export default function PaymentPage() {
