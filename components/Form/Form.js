@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import Link from "next/link";
 export default function Form({ onSubmit }) {
-  // const [formData, setFormData] = useState[{ x }];
+  // const [formData, setFormData] = useState[{ x }];s
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -18,7 +18,7 @@ export default function Form({ onSubmit }) {
       >
         <h2>Appointment</h2>
         <h3>Payment</h3>
-        <p>
+        <p className="paragraph--payment">
           Use this link to transfer the deposit. Later you can return this page,
           fill and submit the appointment request form. Any submitted form
           without having a corresponding payment reference will be disregarded.
@@ -30,9 +30,10 @@ export default function Form({ onSubmit }) {
           </Link>
         </fieldset>
         <h3>Tattoo appointment request</h3>
-        <p>
-          Fill out this as explicit as possible. Seperate queries via e-mail
-          will not be responded.
+        <p className="paragraph--payment">
+          Read <Link href="./terms-and-conditions">terms and conditions </Link>
+          before you start filling the form. Fill out this as explicit as
+          possible.
         </p>
         <fieldset>
           <legend>Contact Information</legend>
@@ -50,7 +51,6 @@ export default function Form({ onSubmit }) {
             name="lname"
             placeholder="type your last name"
             type="text"
-            required
           />
           <label htmlFor="email">E-mail:</label>
           <input
@@ -91,7 +91,6 @@ export default function Form({ onSubmit }) {
             min="5"
             max="100"
             placeholder="cm x cm"
-            required
           />
           <label htmlFor="references">References:</label>
           <textarea
@@ -122,6 +121,7 @@ export default function Form({ onSubmit }) {
             name="bookingDate"
             min="01-01-2023"
             max="31-12-2026"
+            required
           />
           <label htmlFor="references">Health conditions:</label>
           <textarea
@@ -130,16 +130,13 @@ export default function Form({ onSubmit }) {
             rows="4"
             cols="50"
             placeholder="Please indicate if you have any medical conditions, as it may be necessary for me to take appropriate measures to ensure your well-being and mine. Your response will be kept confidential.(e.g. low blood sugar, bloodborne diseases, ..)"
+            required
           />
         </fieldset>
-        <label htmlFor="tos">
-          <input type="checkbox" name="tos" id="tos" required />I have read the{" "}
-          <Link href="./terms-and-conditions">terms and conditions</Link> (i
-          would be very grateful if you actually read)
-        </label>
+
         <label htmlFor="range">
           How serious are you about this booking?
-          <input type="range" min={0} max="200" value="0" />
+          <input type="range" min="0" max="200" />
         </label>
         <button>Submit</button>
       </form>

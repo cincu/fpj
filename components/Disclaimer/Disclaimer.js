@@ -2,16 +2,29 @@ import Link from "next/link";
 export default function Disclaimer() {
   return (
     <div className="container">
-      <h2>Hi!</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget
-        lectus in quam blandit condimentum. Sed tristique magna sit amet velit
-        sollicitudin, eget efficitur elit iaculis. Curabitur fringilla tincidunt
-        justo a laoreet. Phasellus interdum neque id libero varius, ac ultricies
-        mi congue.pls read <Link href="#">terms and conditions</Link> Nulla
-        facilisi. Sed auctor, leo id tincidunt blandit, justo tortor imperdiet
-        mauris, eu euismod tortor purus sit amet nunc. In hac habitasse platea
-        dictumst. Maecenas nec eros in purus euismod luctus.
+      <p className="paragraph--center">
+        Welcome to the creative corner of Jumisu, a graphic designer and tattoo
+        artist. My philosophy is rooted in authenticity, originality, and a
+        genuine love for the art I create. I believe in honoring the essence of
+        design and the transformative power of tattooing.
+      </p>
+      <br />
+      <strong className="paragraph--center">
+        With a passion for breaking free from the mold, I am eager to
+        collaborate with like-minded individuals who appreciate the value of
+        craftsmanship and creativity.
+      </strong>
+      <br />
+      <p className="paragraph--center">
+        Whether it's graphic design that tells a compelling story or tattoos
+        that reflect your personal journey, I'm here to bring your vision to
+        life in a way that celebrates the art itself. So, if you're seeking a
+        professional who values individuality, authenticity, and a profound
+        connection to their craft, you've come to the right place. Welcome to a
+        world where every project is a labor of love, where clients are partners
+        in the creative journey, and where art is truly respected and
+        celebrated. Let's work together to turn your ideas into exceptional
+        pieces that resonate with your unique story.
       </p>
     </div>
   );

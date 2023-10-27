@@ -64,15 +64,30 @@ button {
   gap: 3rem;
 }
 /* USER STORY 1 FORM*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
+.paragraph--center {
+  text-indent: 2rem;
+  text-align: center;
+  letter-spacing: 0.16rem;
+}
+
+strong {
+  font-size: 1.6rem;
+}
+
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: left;
 }
+
 .container {
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 fieldset {
   border: solid var(--primary-color) 1px;
@@ -81,7 +96,7 @@ fieldset {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  min-width: 200px;
+  width: 85%;
 }
 legend {
   background-color: var(--primary-color);
@@ -89,6 +104,20 @@ legend {
   padding: 0.5rem;
   color: var(--text-contrast-color);
 }
+input,
+textarea,
+select {
+  padding: 0.8rem 1rem;
+  margin: 0.4rem 0;
+  border: 1px solid #555;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: var(--text-contrast-color);
+  border: 0.3rem solid var(--primary-color);
+}
+
 /* USER STORY 2 WORKS GRID*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 .filterbar {
   display: flex;
@@ -195,7 +224,7 @@ legend {
   border: none;
   color: #ffffff;
   text-align: center;
-  font-size: 28px;
+  font-size: 3rem;
   padding: 20px;
   width: 200px;
   transition: all 0.5s;
@@ -241,12 +270,15 @@ legend {
     margin: 0rem 6rem 6rem 6rem;
   }
   fieldset {
-    width: 60rem;
+    width: 80%;
   }
   .title--home {
     font-size: 1.2rem;
   }
   .logo {
     padding-top: 5rem;
+  }
+  .paragraph--payment {
+    width: 90%;
   }
 }
