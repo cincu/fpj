@@ -1,9 +1,9 @@
-import Navigation from "@/components/Navigation/Navigation";
+// import Navigation from "@/components/Navigation/Navigation";
 
 export default function termsAndConditionsPage() {
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <div className="container">
         <h2>Terms and Conditions</h2>
         <h3>Health and Safety</h3>

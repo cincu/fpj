@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation/Navigation";
+// import Navigation from "@/components/Navigation/Navigation";
 import Form from "@/components/Form/Form";
 import Disclaimer from "@/components/Disclaimer/Disclaimer";
 import { useRouter } from "next/router";
@@ -21,7 +21,7 @@ export default function AboutMePage() {
   }
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Disclaimer />
       <Form onSubmit={addAppointment} />
     </>
