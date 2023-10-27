@@ -117,6 +117,10 @@ select:focus {
   background-color: var(--text-contrast-color);
   border: 0.3rem solid var(--primary-color);
 }
+.div--seriousness {
+  display: flex;
+  flex-direction: column;
+}
 
 /* USER STORY 2 WORKS GRID*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 .filterbar {

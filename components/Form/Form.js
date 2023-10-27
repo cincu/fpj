@@ -133,11 +133,8 @@ export default function Form({ onSubmit }) {
             required
           />
         </fieldset>
-
-        <label htmlFor="range">
-          How serious are you about this booking?
-          <input type="range" min="0" max="200" />
-        </label>
+        <label htmlFor="range">How serious are you about this booking?</label>{" "}
+        <input type="range" min="0" max="200" />
         <button>Submit</button>
       </form>
     </div>
