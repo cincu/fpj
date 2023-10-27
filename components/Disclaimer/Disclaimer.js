@@ -1,4 +1,3 @@
-import Link from "next/link";
 export default function Disclaimer() {
   return (
     <div className="container">
@@ -16,14 +15,14 @@ export default function Disclaimer() {
       </strong>
       <br />
       <p className="paragraph--center">
-        Whether it's graphic design that tells a compelling story or tattoos
-        that reflect your personal journey, I'm here to bring your vision to
-        life in a way that celebrates the art itself. So, if you're seeking a
+        Whether it-s graphic design that tells a compelling story or tattoos
+        that reflect your personal journey, I-m here to bring your vision to
+        life in a way that celebrates the art itself. So, if you-re seeking a
         professional who values individuality, authenticity, and a profound
-        connection to their craft, you've come to the right place. Welcome to a
+        connection to their craft, you-ve come to the right place. Welcome to a
         world where every project is a labor of love, where clients are partners
         in the creative journey, and where art is truly respected and
-        celebrated. Let's work together to turn your ideas into exceptional
+        celebrated. Let-s work together to turn your ideas into exceptional
         pieces that resonate with your unique story.
       </p>
     </div>

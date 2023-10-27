@@ -14,7 +14,7 @@ export default function termsAndConditionsPage() {
       identification may be required. <h3>Appointments and Deposits</h3>
       Booking: Appointments are scheduled in advance. A deposit may be required
       to secure your booking, which will be deducted from the total cost.
-      Rescheduling: If you need to reschedule, please provide at least 48 hours'
+      Rescheduling: If you need to reschedule, please provide at least 48 hours-
       notice. Deposits are non-refundable but may be transferred to your
       rescheduled appointment. No-Show: Failure to show up for a scheduled
       appointment without notice may result in forfeiture of your deposit.
@@ -22,7 +22,7 @@ export default function termsAndConditionsPage() {
       consultations, please use email as the primary mode of communication. This
       helps us maintain clear and documented records of our discussions.
       Response Time: We will respond to emails promptly, usually within 48
-      hours. Your patience and understanding are appreciated.{" "}
+      hours. Your patience and understanding are appreciated.
       <h3>Design and Artwork</h3> Consultation: Consultations are recommended
       for custom designs. Please provide references and ideas to help us create
       your unique tattoo. Artwork Approval: You will have the opportunity to
@@ -31,10 +31,10 @@ export default function termsAndConditionsPage() {
       estimated time. Payment is due in full at the end of the session. Cash
       Only: We accept cash payments only. Please come prepared with the
       appropriate amount. <h3> Cancellations</h3> Cancellation Policy: If you
-      must cancel, please provide at least 12 hours' notice. We understand that
-      unforeseen circumstances can arise. No refund on the deposit. Artist's
+      must cancel, please provide at least 12 hours- notice. We understand that
+      unforeseen circumstances can arise. No refund on the deposit. Artist-s
       Discretion: We reserve the right to cancel or refuse service if necessary,
-      in accordance with professional ethics and health standards.{" "}
+      in accordance with professional ethics and health standards.
       <h3>Aftercare</h3> Tattoo Aftercare: You will receive detailed aftercare
       instructions to ensure proper healing. Following these instructions is
       crucial for the longevity and appearance of your tattoo. By booking an
