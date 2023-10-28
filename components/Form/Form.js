@@ -16,19 +16,6 @@ export default function Form({ onSubmit }) {
         method="post"
         onSubmit={handleSubmit}
       >
-        <h2>Appointment</h2>
-        <h3>Payment</h3>
-        <p className="paragraph--payment">
-          Use this link to transfer the deposit. Later you can return this page,
-          fill and submit the appointment request form. Any submitted form
-          without having a corresponding payment reference will be disregarded.
-        </p>
-        <fieldset>
-          <legend>Payment Link</legend>
-          <Link href="https://www.paypal.com/paypalme/jumisu4u/100EUR">
-            click here to be redirected
-          </Link>
-        </fieldset>
         <h3>Tattoo appointment request</h3>
         <p className="paragraph--payment">
           Read <Link href="./terms-and-conditions">terms and conditions </Link>
@@ -132,6 +119,18 @@ export default function Form({ onSubmit }) {
             placeholder="Please indicate if you have any medical conditions, as it may be necessary for me to take appropriate measures to ensure your well-being and mine. Your response will be kept confidential.(e.g. low blood sugar, bloodborne diseases, ..)"
             required
           />
+        </fieldset>
+        <h3>Payment</h3>
+        <p className="paragraph--payment">
+          Use this link to transfer the deposit. Later you can return this page,
+          fill and submit the appointment request form. Any submitted form
+          without having a corresponding payment reference will be disregarded.
+        </p>
+        <fieldset>
+          <legend>Payment Link</legend>
+          <Link href="https://www.paypal.com/paypalme/jumisu4u/100EUR">
+            click here to be redirected
+          </Link>
         </fieldset>
         <label htmlFor="range">How serious are you about this booking?</label>{" "}
         <input type="range" min="0" max="200" />

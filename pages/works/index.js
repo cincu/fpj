@@ -6,30 +6,31 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
-// import useLocalStorageState from "use-local-storage-state";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function WorksPage() {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR("/api/collection", {
+  const { data, error, isLoading } = useSWR("/api/works", {
     fallbackData: [],
   });
   const { data: session } = useSession();
   console.log(session);
   // set the initial state to "graphics"
-  const [selectedCategory, setSelectedCategory] = useState("graphics");
+  const [selectedCategory, setSelectedCategory] =
+    useLocalStorageState("graphics");
 
   //state for the add form visibility
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   //add form submit
   async function addWork(id) {
-    const response = await fetch(`/api/collection/${id}`, {
+    const response = await fetch(`/api/works/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(id),
     });
     if (response.ok) {
-      router.push("/collection");
+      router.push("/works");
     }
   }
   // state to track the currently selected button
@@ -48,7 +49,6 @@ export default function WorksPage() {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   if (!data) return;
-
   return (
     <>
       {/* <Navigation /> */}
@@ -57,7 +57,9 @@ export default function WorksPage() {
           className="button--navigation"
           onClick={() => handleCategorySelect("graphics")}
           style={
-            activeButton === "graphics" ? { backgroundColor: "blueviolet" } : {}
+            activeButton === "graphics"
+              ? { backgroundColor: "black", color: "white" }
+              : {}
           }
         >
           graphics
@@ -66,7 +68,9 @@ export default function WorksPage() {
           className="button--navigation"
           onClick={() => handleCategorySelect("tattoo")}
           style={
-            activeButton === "tattoo" ? { backgroundColor: "blueviolet" } : {}
+            activeButton === "tattoo"
+              ? { backgroundColor: "black", color: "white" }
+              : {}
           }
         >
           tattoos
@@ -75,7 +79,9 @@ export default function WorksPage() {
           className="button--navigation"
           onClick={() => handleCategorySelect("items")}
           style={
-            activeButton === "items" ? { backgroundColor: "blueviolet" } : {}
+            activeButton === "items"
+              ? { backgroundColor: "black", color: "white" }
+              : {}
           }
         >
           items

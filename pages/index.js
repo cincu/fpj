@@ -4,14 +4,19 @@ import logo from "../public/logo_1.png";
 
 export default function Home() {
   return (
-    <div className="div--home">
-      <Image className="logo" src={logo} width={700} alt="Logo Png" />
-      <Link className="title--home" href="./contact-me">
-        booking
-      </Link>
-      <Link className="title--home" href="./collection">
-        collection
-      </Link>
-    </div>
+    <>
+      <Image className="logo" src={logo} width={750} alt="Logo Png" />
+      <div className="div--home">
+        <Link className="title--home" href="./contact-me">
+          booking
+        </Link>
+        <Link className="title--home" href="./works">
+          works
+        </Link>
+        <Link className="title--home" href="./shop">
+          shop
+        </Link>
+      </div>
+    </>
   );
 }

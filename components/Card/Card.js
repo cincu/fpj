@@ -41,11 +41,16 @@ export default function Card({ image }) {
             <button
               action={process.env.SENDER_MAIL}
               method="post"
+              className="button--group"
               onClick={handleAppreciate}
             >
-              appreciate
+              show interest
             </button>
-            <button id={image.title} onClick={handleCopyToClipboard}>
+            <button
+              className="button--group"
+              id={image.title}
+              onClick={handleCopyToClipboard}
+            >
               reference
             </button>
           </div>

@@ -3,17 +3,17 @@
   --text-color: rgb(91, 91, 91);
   --text-contrast-color: rgb(206, 206, 206);
   --background-color: rgb(255, 255, 255);
-  --primary-color: rgb(106, 0, 220);
+  --primary-color: rgb(0, 0, 0);
   --title-font: "Audiowide", sans-serif;
   --text-font: "Jura", sans-serif;
 }
 
 .div--navigation {
+  position: relative;
   height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
 }
 .navigation--links {
   text-decoration: none;
@@ -28,6 +28,7 @@ body {
   padding: 0;
   font-family: var(--text-font);
   align-items: center;
+  justify-content: center;
 }
 h2 {
   color: var(--primary-color);
@@ -39,15 +40,21 @@ h3 {
 }
 button {
   padding: 0.8rem;
-  border-radius: 0.5rem;
   width: 6rem;
   background-color: grey;
   border: none;
+  font-size: 1rem;
+  font-family: var(--title-font);
+}
+
+button:hover {
+  background-color: blue;
 }
 
 /* USER STORY 0 ENTRANCE PAGE*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
-.logo {
+/* .logo {
   padding-top: 12rem;
+  position: relative;
 }
 .title--home {
   font-family: var(--title-font);
@@ -62,12 +69,14 @@ button {
   align-items: center;
   justify-content: center;
   gap: 3rem;
-}
+  position: absolute;
+} */
 /* USER STORY 1 FORM*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 .paragraph--center {
   text-indent: 2rem;
   text-align: center;
   letter-spacing: 0.16rem;
+  font-size: 1rem;
 }
 
 strong {
@@ -90,8 +99,8 @@ form {
   flex-wrap: wrap;
 }
 fieldset {
-  border: solid var(--primary-color) 1px;
-  box-shadow: 0.2rem 0.2rem 0.2rem var(--primary-color);
+  border: none;
+  /* box-shadow: 0.2rem 0.2rem 0.2rem var(--primary-color); */
   padding: 2rem;
   border-radius: 1rem;
   display: flex;
@@ -109,13 +118,13 @@ textarea,
 select {
   padding: 0.8rem 1rem;
   margin: 0.4rem 0;
-  border: 1px solid #555;
+  border: none;
+  border-bottom: 2px solid black;
 }
 input:focus,
 textarea:focus,
 select:focus {
-  background-color: var(--text-contrast-color);
-  border: 0.3rem solid var(--primary-color);
+  border: 2px solid black;
 }
 .div--seriousness {
   display: flex;
@@ -144,20 +153,23 @@ select:focus {
   cursor: pointer;
   text-align: center;
   outline: none;
-  color: var(--text-contrast-color);
+  color: var(--text-color);
   background-color: white;
   border: none;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 1px var(--text-color);
   font-family: var(--title-font);
 }
 
 .button--navigation:hover {
-  background-color: grey;
+  background-color: var(--text-contrast-color);
 }
-
+ul {
+  margin: 0;
+  padding: 0;
+  margin-inline-start: 0;
+  padding-inline-start: 0;
+}
 .button--navigation:active {
-  background-color: yellow;
-  box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
@@ -173,14 +185,6 @@ select:focus {
   align-items: center;
   justify-content: center;
   margin: 2rem;
-}
-.btn {
-  padding: 0.3em 0.9em;
-  border-radius: 300px;
-  border: none;
-  font-size: 1.1rem;
-  margin-block: 0.5rem;
-  opacity: 0.7;
 }
 
 .btn:hover {
@@ -212,7 +216,7 @@ select:focus {
 }
 .div--center {
   margin: auto;
-  width: 50%;
+  width: 100%;
   padding: 10px;
   display: flex;
   justify-content: center;

@@ -14,7 +14,7 @@ export default function Disclaimer() {
         craftsmanship and creativity.
       </strong>
       <br />
-      <p className="paragraph--center">
+      {/* <p className="paragraph--center">
         Whether it-s graphic design that tells a compelling story or tattoos
         that reflect your personal journey, I-m here to bring your vision to
         life in a way that celebrates the art itself. So, if you-re seeking a
@@ -24,7 +24,7 @@ export default function Disclaimer() {
         in the creative journey, and where art is truly respected and
         celebrated. Let-s work together to turn your ideas into exceptional
         pieces that resonate with your unique story.
-      </p>
+      </p> */}
     </div>
   );
 }

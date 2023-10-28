@@ -12,14 +12,14 @@ export default function WorksDetailsPage() {
   const { id } = router.query;
   console.log(router.query.id);
 
-  const { data, error, isLoading, mutate } = useSWR("/api/collection", {
+  const { data, error, isLoading, mutate } = useSWR("/api/works", {
     fallbackData: [],
   });
   const currentImage = data.find((image) => image._id === id);
   console.log(currentImage);
 
   async function editWork(currentImage) {
-    const response = await fetch(`/api/collection/${id}`, {
+    const response = await fetch(`/api/works/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default function WorksDetailsPage() {
       body: JSON.stringify(currentImage),
     });
     if (response.ok) {
-      mutate(), router.push("/collection");
+      mutate(), router.push("/works");
     } else {
       console.log(`Error: ${response.status}`);
     }
