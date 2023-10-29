@@ -1,4 +1,3 @@
-// import Navigation from "@/components/Navigation/Navigation";
 import Card from "@/components/Card/Card";
 import useSWR from "swr";
 import { useRouter } from "next/router";
@@ -38,9 +37,7 @@ export default function WorksDetailsPage() {
   if (!currentImage) return;
   return (
     <>
-      {/* <Navigation /> */}
       <Card image={currentImage} />
-      {/* if user is admin render: */}
       {session && (
         <EditForm
           onSubmit={editWork}

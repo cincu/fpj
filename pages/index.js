@@ -5,15 +5,15 @@ import logo from "../public/logo_1.png";
 export default function Home() {
   return (
     <>
-      <Image className="logo" src={logo} width={750} alt="Logo Png" />
-      <div className="div--home">
-        <Link className="title--home" href="./contact-me">
+      <Image className="logo" src={logo} width={550} alt="Logo Png" />
+      <div className="div--intro">
+        <Link className="link--navigation" href="./contact-me">
           booking
         </Link>
-        <Link className="title--home" href="./works">
+        <Link className="link--navigation" href="./works">
           works
         </Link>
-        <Link className="title--home" href="./shop">
+        <Link className="link--navigation" href="./shop">
           shop
         </Link>
       </div>

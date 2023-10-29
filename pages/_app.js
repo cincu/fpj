@@ -2,10 +2,9 @@ import "./globals.css";
 import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
 import { useRouter } from "next/router";
-import Navigation from "@/components/Navigation/Navigation";
 export default function App({ Component, pageProps }) {
-  const router = useRouter();
-  const navigationRender = router.pathname !== "/";
+  // const router = useRouter();
+  // const navigationRender = router.pathname !== "/";
   return (
     <SWRConfig
       value={{
@@ -18,7 +17,7 @@ export default function App({ Component, pageProps }) {
         },
       }}
     >
-      {navigationRender && <Navigation />}
+      {/* {navigationRender && <Navigation />} */}
 
       <SessionProvider session={pageProps.session}>
         <Component {...pageProps} />

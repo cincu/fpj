@@ -1,4 +1,3 @@
-// import Navigation from "@/components/Navigation/Navigation";
 import { useState } from "react";
 import CardsByCategory from "@/components/CardsByCategory/CardsByCategory";
 import EditForm from "@/components/EditForm";
@@ -51,7 +50,6 @@ export default function WorksPage() {
   if (!data) return;
   return (
     <>
-      {/* <Navigation /> */}
       <ul className="filterbar">
         <button
           className="button--navigation"
