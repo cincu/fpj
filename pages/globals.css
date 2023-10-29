@@ -26,10 +26,13 @@ a {
   color: var(--text-contrast-color);
   font-family: var(--title-font);
 }
+a:hover {
+  color: var(--background-color);
+}
 .back--button {
   position: relative;
   background-color: transparent;
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: var(--text-font);
   color: var(--primary-color);
 }
@@ -63,6 +66,7 @@ button {
   border: none;
   font-size: 0.8rem;
   font-family: var(--title-font);
+  text-align: center;
 }
 
 button:hover {
@@ -168,7 +172,7 @@ select:focus {
 
 /* USER STORY 2 WORKS GRID*****-*_*_-*_*_-*_*_-*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 .filterbar {
-  position: fixed;
+  /* position: fixed; */
   justify-content: center;
   display: flex;
   flex-direction: row;
@@ -260,15 +264,15 @@ ul {
 }
 
 .crud {
-  border-radius: 3rem;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: 3px 3px 1px blueviolet;
-  background-color: white;
 }
+.form--edit {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.05rem;
+}
+
 .div--center {
   margin: auto;
   width: 100%;
@@ -342,15 +346,13 @@ ul {
 
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0; /* Initially hidden on the left side */
+  left: 0;
   height: 25%;
   background-color: var(--primary-color);
   display: flex;
   line-height: 2rem;
-
+  text-align: center;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
   width: 0;
   transition: width 0.3s, left 0.3s; /* Transition for smooth animation */
@@ -359,7 +361,7 @@ ul {
 .closebtn {
   font-size: 1.8rem;
   cursor: pointer;
-  color: white;
+  color: var(--text-contrast-color);
   margin-bottom: 1rem;
 }
 .closebtn:hover {
@@ -375,5 +377,5 @@ ul {
 /* When the sidebar is open, expand the width to 10rem */
 .sidebar.open {
   width: 6rem;
-  padding: 0rem 0rem 1rem 1rem;
+  padding: 1rem;
 }

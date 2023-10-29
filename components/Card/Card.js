@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
+import { MapInteractionCSS } from "react-map-interaction";
 export default function Card({ image }) {
   const handleCopyToClipboard = async () => {
     try {
@@ -28,8 +28,21 @@ export default function Card({ image }) {
 
   return (
     <div className="card--container">
-      <img alt={image.title} width={500} src={image.imageUrl} />
-
+      <MapInteractionCSS
+        showControls
+        defaultValue={{
+          scale: 1,
+          translation: { x: 0, y: 20 },
+        }}
+        minScale={0.5}
+        maxScale={3}
+        translationBounds={{
+          xMax: 400,
+          yMax: 200,
+        }}
+      >
+        <img alt={image.title} width={500} src={image.imageUrl} />
+      </MapInteractionCSS>
       <h2>{image.title}</h2>
       {image.category === "graphics" && (
         <div className="graphic--container">
