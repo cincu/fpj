@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import EditForm from "@/components/EditForm";
 import { useSession } from "next-auth/react";
-
+import Link from "next/link";
 export default function WorksDetailsPage() {
   const router = useRouter();
   const { data: session } = useSession();
@@ -33,10 +33,13 @@ export default function WorksDetailsPage() {
     console.log("work edited ?");
   }
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <div className="simple-shape-two">loading...</div>;
   if (!currentImage) return;
   return (
     <>
+      <Link href="/works" className="back--button">
+        ↽
+      </Link>
       <Card image={currentImage} />
       {session && (
         <EditForm

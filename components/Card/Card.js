@@ -31,12 +31,18 @@ export default function Card({ image }) {
       <img alt={image.title} width={500} src={image.imageUrl} />
 
       <h2>{image.title}</h2>
-      {image.category === "graphics" && <p>{image.availableForms}</p>}
+      {image.category === "graphics" && (
+        <div className="graphic--container">
+          <hr className="breaker--hr" />
+          <p>{image.availableForms}</p>
+        </div>
+      )}
 
       {image.category === "tattoo" && (
         <div className="tattoo--container">
-          <p>{image.dateOfTattoo}</p>
-          <p>{image.durationOfTattoo}</p>
+          <hr className="breaker--hr" />
+          <p className="align--right">{image.dateOfTattoo}</p>
+          <p className="align--right">{image.durationOfTattoo}</p>
           <div className="buttons--container">
             <button
               action={process.env.SENDER_MAIL}
@@ -57,9 +63,10 @@ export default function Card({ image }) {
         </div>
       )}
 
-      {image.category === "items" && (
-        <div className="item--container">
-          <p>Price : {image.price}</p>
+      {image.category === "shop" && (
+        <div className="shop--container">
+          <hr className="breaker--hr" />
+          <p className="align--right">Price : {image.price}</p>
           <div className="buttons--container">
             <Link href="./cart">
               <button>add2basket</button>
