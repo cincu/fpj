@@ -68,10 +68,9 @@ export default function Card({ image }) {
           <hr className="breaker--hr" />
           <p className="align--right">Price : {image.price}</p>
           <div className="buttons--container">
-            <Link href="./cart">
-              <button>add2basket</button>
+            <Link href="/payment-page">
+              <button>order now</button>
             </Link>
-            <Link href="/payment-page">order now </Link>
           </div>
         </div>
       )}

@@ -49,6 +49,8 @@ export default function WorksPage() {
   if (!data) return;
   return (
     <>
+      <hr className="breaker--hr padded" />
+
       <div className="filterbar">
         <button
           className="button--navigation"

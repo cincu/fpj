@@ -109,7 +109,7 @@ button:hover {
   text-indent: 2rem;
   text-align: center;
   letter-spacing: 0.16rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 strong {
@@ -142,7 +142,6 @@ fieldset {
 }
 legend {
   background-color: var(--primary-color);
-  border-radius: 0.5rem;
   padding: 0.5rem;
   color: var(--text-contrast-color);
 }
@@ -163,6 +162,9 @@ select:focus {
   display: flex;
   flex-direction: column;
 }
+.input--range {
+  accent-color: black;
+}
 
 /* USER STORY 2 WORKS GRID*****-*_*_-*_*_-*_*_-*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 .filterbar {
@@ -178,6 +180,7 @@ select:focus {
 .simple-shape-two {
   background-color: var(--primary-color);
   color: var(--text-contrast-color);
+  padding: 2rem;
 }
 .cards--container {
   height: 50rem;
@@ -237,6 +240,9 @@ ul {
   box-shadow: none;
   border: none;
 }
+.padded {
+  margin-bottom: 4rem;
+}
 .align--right {
   text-align: right;
 }
@@ -273,20 +279,20 @@ ul {
   align-items: center;
 }
 
-/* login buttons */
+/* login page */
+.login--header {
+  font-size: 1.6rem;
+}
 .login {
-  display: inline-block;
-  border-radius: 4px;
   background-color: var(--primary-color);
-  border: none;
   color: #ffffff;
-  text-align: center;
-  font-size: 3rem;
-  padding: 20px;
-  width: 200px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 10rem;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+  position: relative;
 }
 
 .login span {
@@ -314,20 +320,13 @@ ul {
   right: 0;
 }
 
-.div--center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-}
 @media only screen and (min-width: 601px) {
   body {
     justify-content: center;
     margin: 0rem 6rem 6rem 6rem;
   }
   fieldset {
-    width: 80%;
+    width: 100%;
   }
   .title--home {
     font-size: 1.2rem;
@@ -336,7 +335,8 @@ ul {
     padding: 5rem 0rem 5rem 0rem;
   }
   .paragraph--payment {
-    width: 90%;
+    width: 100%;
+    text-align: left;
   }
 }
 
@@ -344,9 +344,11 @@ ul {
   position: fixed;
   top: 0;
   left: 0; /* Initially hidden on the left side */
-  height: 100%;
-  background-color: #111;
+  height: 25%;
+  background-color: var(--primary-color);
   display: flex;
+  line-height: 2rem;
+
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -355,19 +357,23 @@ ul {
 }
 
 .closebtn {
-  font-size: 24px;
+  font-size: 1.8rem;
   cursor: pointer;
   color: white;
   margin-bottom: 1rem;
 }
+.closebtn:hover {
+  background-color: initial;
+}
 
 .openbtn {
-  font-size: 24px;
+  font-size: 1.8rem;
   cursor: pointer;
   color: white;
 }
 
 /* When the sidebar is open, expand the width to 10rem */
 .sidebar.open {
-  width: 5rem;
+  width: 6rem;
+  padding: 0rem 0rem 1rem 1rem;
 }

@@ -1,12 +1,13 @@
 // import { useState } from "react";
 import Link from "next/link";
-export default function Form({ onSubmit }) {
+export default function Form({ onSubmit, localFormData, setLocalFormData }) {
   // const [formData, setFormData] = useState[{ x }];s
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     onSubmit(data);
+    setLocalFormData(data);
     event.target.reset();
   }
   return (
@@ -31,6 +32,7 @@ export default function Form({ onSubmit }) {
             placeholder="type your first name"
             type="text"
             required
+            defaultValue={localFormData.fname}
           />
           <label htmlFor="last-name">Last Name:</label>
           <input
@@ -38,6 +40,7 @@ export default function Form({ onSubmit }) {
             name="lname"
             placeholder="type your last name"
             type="text"
+            defaultValue={localFormData.lname}
           />
           <label htmlFor="email">E-mail:</label>
           <input
@@ -46,6 +49,7 @@ export default function Form({ onSubmit }) {
             placeholder="random@mail.com"
             type="text"
             required
+            defaultValue={localFormData.email}
           />
           <label htmlFor="instagram">Instagram:</label>
           <input
@@ -53,22 +57,30 @@ export default function Form({ onSubmit }) {
             name="instagram"
             placeholder="@..."
             type="text"
+            defaultValue={localFormData.instagram}
           />
         </fieldset>
         <fieldset>
           <legend>Design Ideas</legend>
           <label htmlFor="placement">Placement ideas:</label>
-          <select id="placement" name="placement" required>
-            <option disabled selected value="choose">
+          <select
+            id="placement"
+            name="placement"
+            required
+            defaultValue={localFormData.placement}
+          >
+            <option disabled defaultValue="choose">
               choose
             </option>
-            <option value="upper-lower-arm-torso">lower arm, leg, torso</option>
-            <option value="hands">hand</option>
-            <option value="foot">foot</option>
-            <option value="shoulder">shoulder</option>
-            <option value="skull">skull</option>
-            <option value="face">face</option>
-            <option value="other">other</option>
+            <option defaultValue="upper-lower-arm-torso">
+              lower arm, leg, torso
+            </option>
+            <option defaultValue="hands">hand</option>
+            <option defaultValue="foot">foot</option>
+            <option defaultValue="shoulder">shoulder</option>
+            <option defaultValue="skull">skull</option>
+            <option defaultValue="face">face</option>
+            <option defaultValue="other">other</option>
           </select>
           <label htmlFor="tattooSize">Approximate size in cm:</label>
           <input
@@ -78,6 +90,7 @@ export default function Form({ onSubmit }) {
             min="5"
             max="100"
             placeholder="cm x cm"
+            defaultValue={localFormData.tattooSize}
           />
           <label htmlFor="references">References:</label>
           <textarea
@@ -86,6 +99,7 @@ export default function Form({ onSubmit }) {
             rows="6"
             cols="50"
             required
+            defaultValue={localFormData.references}
             placeholder="Please be explicit as possible. you are encouraged to reference an existing work as well as a nonexisting idea"
           />
         </fieldset>
@@ -100,6 +114,7 @@ export default function Form({ onSubmit }) {
             max="2000"
             placeholder="in €"
             required
+            defaultValue={localFormData.tattooBudget}
           />
           <label htmlFor="bookingDate">Choose the wish-date:</label>
           <input
@@ -109,6 +124,7 @@ export default function Form({ onSubmit }) {
             min="01-01-2023"
             max="31-12-2026"
             required
+            defaultValue={localFormData.bookingDate}
           />
           <label htmlFor="references">Health conditions:</label>
           <textarea
@@ -118,6 +134,7 @@ export default function Form({ onSubmit }) {
             cols="50"
             placeholder="Please indicate if you have any medical conditions, as it may be necessary for me to take appropriate measures to ensure your well-being and mine. Your response will be kept confidential.(e.g. low blood sugar, bloodborne diseases, ..)"
             required
+            defaultValue={localFormData.medicalInfo}
           />
         </fieldset>
         <h3>Payment</h3>
@@ -133,7 +150,7 @@ export default function Form({ onSubmit }) {
           </Link>
         </fieldset>
         <label htmlFor="range">How serious are you about this booking?</label>{" "}
-        <input type="range" min="0" max="200" />
+        <input className="input--range" type="range" min="0" max="200" />
         <button>Submit</button>
       </form>
     </div>
