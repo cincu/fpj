@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { useSession } from "next-auth/react";
 
 export default function CardsByCategory({ images }) {

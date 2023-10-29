@@ -6,33 +6,32 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function WorksPage() {
+export default function ShopPage() {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR("/api/works", {
+  const { data, error, isLoading } = useSWR("/api/shop", {
     fallbackData: [],
   });
   const { data: session } = useSession();
   console.log(session);
   // set the initial state to "graphics"
-  const [selectedCategory, setSelectedCategory] =
-    useLocalStorageState("graphics");
+  const [selectedCategory, setSelectedCategory] = useLocalStorageState("shop");
 
   //state for the add form visibility
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   //add form submit
   async function addWork(id) {
-    const response = await fetch(`/api/works/${id}`, {
+    const response = await fetch(`/api/shop/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(id),
     });
     if (response.ok) {
-      router.push("/works");
+      router.push("/shop");
     }
   }
   // state to track the currently selected button
-  const [activeButton, setActiveButton] = useState(selectedCategory);
+  const [activeButton, setActiveButton] = useState("shop");
 
   // Function to handle button clicks and update the selected category
   const handleCategorySelect = (category) => {
@@ -54,27 +53,15 @@ export default function WorksPage() {
       <div className="filterbar">
         <button
           className="button--navigation"
-          onClick={() => handleCategorySelect("graphics")}
+          onClick={() => handleCategorySelect("shop")}
           style={
-            activeButton === "graphics"
+            activeButton === "shop"
               ? { backgroundColor: "black", color: "white" }
               : {}
           }
         >
-          graphics
+          shop
         </button>
-        <button
-          className="button--navigation"
-          onClick={() => handleCategorySelect("tattoo")}
-          style={
-            activeButton === "tattoo"
-              ? { backgroundColor: "black", color: "white" }
-              : {}
-          }
-        >
-          tattoos
-        </button>
-
         {session && (
           <button
             onClick={() => setIsFormVisible((prev) => !prev)} // Show the form on button click

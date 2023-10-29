@@ -7,7 +7,7 @@ export default function EditForm({ onSubmit, defaultData, formName }) {
     event.target.reset();
   }
   return (
-    <form name={formName} onSubmit={handleSubmit}>
+    <form className="form--edit" name={formName} onSubmit={handleSubmit}>
       <label htmlFor="image-url">image url</label>
       <input
         id="imageUrl"
@@ -37,13 +37,13 @@ export default function EditForm({ onSubmit, defaultData, formName }) {
         type="text"
         defaultValue={defaultData?.availableForms}
       />
-      <label htmlFor="category">category/:graphics/tattoos/shop</label>
-      <input
-        id="category"
-        name="category"
-        type="text"
-        defaultValue={defaultData?.category}
-      />
+      <select id="category" name="category" required>
+        <option defaultValue="choose">choose</option>
+        <option defaultValue="graphics">graphics</option>
+        <option defaultValue="tattoos">tattoos</option>
+        <option defaultValue="shop">shop</option>
+      </select>
+
       <label htmlFor="dateOfTattoo">date of tattoo:</label>
       <input
         id="dateOfTattoo"
@@ -51,7 +51,9 @@ export default function EditForm({ onSubmit, defaultData, formName }) {
         type="text"
         defaultValue={defaultData?.dateOfTattoo}
       />
-      <button type="submit">submit</button>
+      <button className="crud" type="submit">
+        submit
+      </button>
     </form>
   );
 }
