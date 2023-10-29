@@ -1,6 +1,11 @@
+import Link from "next/link";
 export default function termsAndConditionsPage() {
   return (
     <>
+      <Link href="/contact-me" className="back--button">
+        ↽
+      </Link>
+      <hr className="breaker--hr" />
       <div className="container">
         <h2>Terms and Conditions</h2>
         <h3>Health and Safety</h3>

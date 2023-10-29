@@ -17,7 +17,7 @@ export default function MySidebar() {
       )}
       {sidebarOpen && (
         <>
-          <Link href="/about-me">about me</Link>
+          <Link href="/about-me">about</Link>
           <Link href="/contact-me">booking</Link>
           <Link href="/works">works</Link>
           <Link href="/shop">shop</Link>

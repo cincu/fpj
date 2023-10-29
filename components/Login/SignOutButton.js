@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function SignOutButton() {
   return (
     <div className="div--center">
-      <h2>successful login admin</h2>
+      <h2 className="login--header">successful login admin</h2>
       <h4>
         you can direct <Link href="/works">here</Link> to ADD, DELETE, EDIT
         works
