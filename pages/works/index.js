@@ -1,11 +1,9 @@
-// import Navigation from "@/components/Navigation/Navigation";
 import { useState } from "react";
 import CardsByCategory from "@/components/CardsByCategory/CardsByCategory";
 import EditForm from "@/components/EditForm";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-
 import useLocalStorageState from "use-local-storage-state";
 
 export default function WorksPage() {
@@ -47,12 +45,11 @@ export default function WorksPage() {
     : [];
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <div className="simple-shape-two">loading...</div>;
   if (!data) return;
   return (
     <>
-      {/* <Navigation /> */}
-      <ul className="filterbar">
+      <div className="filterbar">
         <button
           className="button--navigation"
           onClick={() => handleCategorySelect("graphics")}
@@ -77,14 +74,14 @@ export default function WorksPage() {
         </button>
         <button
           className="button--navigation"
-          onClick={() => handleCategorySelect("items")}
+          onClick={() => handleCategorySelect("shop")}
           style={
-            activeButton === "items"
+            activeButton === "shop"
               ? { backgroundColor: "black", color: "white" }
               : {}
           }
         >
-          items
+          shop
         </button>
         {session && (
           <button
@@ -95,7 +92,7 @@ export default function WorksPage() {
             +
           </button>
         )}
-      </ul>
+      </div>
       {isFormVisible && <EditForm onSubmit={addWork} />}
       <CardsByCategory images={filteredImages} />
     </>

@@ -37,7 +37,7 @@ export default function EditForm({ onSubmit, defaultData, formName }) {
         type="text"
         defaultValue={defaultData?.availableForms}
       />
-      <label htmlFor="category">category/:graphics/tattoos/items</label>
+      <label htmlFor="category">category/:graphics/tattoos/shop</label>
       <input
         id="category"
         name="category"
