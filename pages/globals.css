@@ -164,7 +164,7 @@ select:focus {
   flex-direction: column;
 }
 
-/* USER STORY 2 WORKS GRID*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
+/* USER STORY 2 WORKS GRID*****-*_*_-*_*_-*_*_-*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 .filterbar {
   position: fixed;
   justify-content: center;
