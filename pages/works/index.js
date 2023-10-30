@@ -12,7 +12,7 @@ export default function WorksPage() {
     fallbackData: [],
   });
   const { data: session } = useSession();
-  console.log(session);
+  console.log("session is:", session);
   // set the initial state to "graphics"
   const [selectedCategory, setSelectedCategory] =
     useLocalStorageState("graphics");
@@ -74,7 +74,17 @@ export default function WorksPage() {
         >
           tattoos
         </button>
-
+        <button
+          className="button--navigation"
+          onClick={() => handleCategorySelect("shop")}
+          style={
+            activeButton === "shop"
+              ? { backgroundColor: "black", color: "white" }
+              : {}
+          }
+        >
+          shop
+        </button>
         {session && (
           <button
             onClick={() => setIsFormVisible((prev) => !prev)} // Show the form on button click
