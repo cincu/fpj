@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardsByCategory from "@/components/CardsByCategory/CardsByCategory";
 import EditForm from "@/components/EditForm";
 import { useSession } from "next-auth/react";
@@ -12,10 +12,10 @@ export default function WorksPage() {
     fallbackData: [],
   });
   const { data: session } = useSession();
+  const [filteredImages, setFilteredImages] = useState();
   console.log("session is:", session);
   // set the initial state to "graphics"
-  const [selectedCategory, setSelectedCategory] =
-    useLocalStorageState("graphics");
+  const [selectedCategory, setSelectedCategory] = useState("graphics");
 
   //state for the add form visibility
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -40,15 +40,19 @@ export default function WorksPage() {
     setActiveButton(category);
   };
 
-  const filteredImages = data
-    ? data.filter((image) => image.category === selectedCategory)
-    : [];
+  useEffect(() => {
+    if (data) {
+      setFilteredImages(
+        data.filter((image) => image.category === selectedCategory)
+      );
+    }
+  }, [data, selectedCategory]);
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div className="simple-shape-two">loading...</div>;
-  if (!data) return;
+  if (!filteredImages) return;
   return (
-    <>
+    <div className="container">
       <hr className="breaker--hr padded" />
 
       <div className="filterbar">
@@ -97,6 +101,6 @@ export default function WorksPage() {
       </div>
       {isFormVisible && <EditForm onSubmit={addWork} />}
       <CardsByCategory images={filteredImages} />
-    </>
+    </div>
   );
 }

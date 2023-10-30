@@ -12,12 +12,9 @@ export default function Home() {
         <Link className="link--navigation" href="./works">
           works
         </Link>
-        {/* <Link
-          className="link--navigation"
-          href={`/shop?selectedCategory=${data.category}`}
-        >
+        <Link className="link--navigation" href="/shop">
           shop
-        </Link> */}
+        </Link>
       </div>
     </>
   );
