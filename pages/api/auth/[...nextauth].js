@@ -16,6 +16,7 @@ export const authOptions = {
 
       async authorize(credentials, req) {
         await dbConnect();
+
         if (!credentials.username || !credentials.password) {
           return error;
         }
@@ -52,6 +53,6 @@ export const authOptions = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.SECRET,
 };
 export default NextAuth(authOptions);

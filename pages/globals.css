@@ -378,4 +378,5 @@ ul {
 .sidebar.open {
   width: 6rem;
   padding: 1rem;
+  z-index: 1;
 }

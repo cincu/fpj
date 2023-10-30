@@ -1,11 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/logo_1.png";
-import useSWR from "swr";
 export default function Home() {
-  const { data } = useSWR("/api/works", {
-    fallbackData: [],
-  });
   return (
     <>
       <Image className="logo" src={logo} width={550} alt="Logo Png" />
@@ -16,12 +12,12 @@ export default function Home() {
         <Link className="link--navigation" href="./works">
           works
         </Link>
-        <Link
+        {/* <Link
           className="link--navigation"
           href={`/shop?selectedCategory=${data.category}`}
         >
           shop
-        </Link>
+        </Link> */}
       </div>
     </>
   );
