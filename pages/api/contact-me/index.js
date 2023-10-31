@@ -8,8 +8,8 @@ export default async function handler(request, response) {
       port: 465,
       secure: true,
       auth: {
-        user: process.env.SENDER_MAIL,
-        pass: process.env.SENDER_PASS,
+        user: "jumisujumisu@outlook.com",
+        pass: "k60x68MqUXsRYRpy5bBOGFCI",
       },
     });
     await new Promise((resolve, reject) => {
