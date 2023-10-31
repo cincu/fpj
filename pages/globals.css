@@ -186,7 +186,6 @@ select:focus {
   gap: 5rem;
   align-items: center;
   margin-bottom: 5rem;
-  z-index: 1;
 }
 .simple-shape-two {
   background-color: var(--primary-color);
@@ -360,6 +359,7 @@ ul {
 
 .sidebar {
   position: fixed;
+  z-index: 1;
   left: 0;
   height: 25%;
   width: 0;

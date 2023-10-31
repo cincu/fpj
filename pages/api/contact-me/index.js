@@ -9,7 +9,7 @@ export default async function handler(request, response) {
       secure: true,
       auth: {
         user: process.env.SENDER_MAIL,
-        pass: "onnd ydxr iahs ytxa",
+        pass: process.env.SENDER_PASS,
       },
     });
     const mailOptions = {

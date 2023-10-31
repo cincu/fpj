@@ -9,7 +9,6 @@ export default function WorksDetailsPage() {
   const { data: session } = useSession();
 
   const { id } = router.query;
-  console.log(router.query.id);
 
   const { data, error, isLoading, mutate } = useSWR("/api/works", {
     fallbackData: [],
@@ -32,8 +31,8 @@ export default function WorksDetailsPage() {
     }
     console.log("work edited ?");
   }
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div className="simple-shape-two">loading...</div>;
+  if (error) return <div>failed to load at edit</div>;
+  if (isLoading) return <div>loading...</div>;
   if (!currentImage) return;
   return (
     <>
