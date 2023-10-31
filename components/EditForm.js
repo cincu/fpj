@@ -37,7 +37,7 @@ export default function EditForm({ onSubmit, defaultData, formName }) {
         defaultValue={defaultData?.availableForms}
       />
       <select id="category" name="category" required>
-        <option defaultValue="choose">choose</option>
+        <option defaultValue={defaultData?.category}>choose</option>
         <option defaultValue="graphics">graphics</option>
         <option defaultValue="tattoos">tattoos</option>
         <option defaultValue="shop">shop</option>
