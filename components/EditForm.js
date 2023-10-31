@@ -4,11 +4,10 @@ export default function EditForm({ onSubmit, defaultData, formName }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     onSubmit(data);
-    event.target.reset();
   }
   return (
     <form className="form--edit" name={formName} onSubmit={handleSubmit}>
-      <label htmlFor="image-url">image url</label>
+      <label htmlFor="imageUrl">image url</label>
       <input
         id="imageUrl"
         name="imageUrl"

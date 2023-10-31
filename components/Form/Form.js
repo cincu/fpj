@@ -1,13 +1,11 @@
 // import { useState } from "react";
 import Link from "next/link";
-export default function Form({ onSubmit, localFormData, setLocalFormData }) {
-  // const [formData, setFormData] = useState[{ x }];s
+export default function Form({ onSubmit }) {
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     onSubmit(data);
-    setLocalFormData(data);
     event.target.reset();
   }
   return (
@@ -32,7 +30,6 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             placeholder="type your first name"
             type="text"
             required
-            defaultValue={localFormData.fname}
           />
           <label htmlFor="last-name">Last Name:</label>
           <input
@@ -40,7 +37,6 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             name="lname"
             placeholder="type your last name"
             type="text"
-            defaultValue={localFormData.lname}
           />
           <label htmlFor="email">E-mail:</label>
           <input
@@ -49,7 +45,6 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             placeholder="random@mail.com"
             type="text"
             required
-            defaultValue={localFormData.email}
           />
           <label htmlFor="instagram">Instagram:</label>
           <input
@@ -57,18 +52,12 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             name="instagram"
             placeholder="@..."
             type="text"
-            defaultValue={localFormData.instagram}
           />
         </fieldset>
         <fieldset>
           <legend>Design Ideas</legend>
           <label htmlFor="placement">Placement ideas:</label>
-          <select
-            id="placement"
-            name="placement"
-            required
-            defaultValue={localFormData.placement}
-          >
+          <select id="placement" name="placement" required>
             <option disabled defaultValue="choose">
               choose
             </option>
@@ -90,7 +79,6 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             min="5"
             max="100"
             placeholder="cm x cm"
-            defaultValue={localFormData.tattooSize}
           />
           <label htmlFor="references">References:</label>
           <textarea
@@ -99,7 +87,6 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             rows="6"
             cols="50"
             required
-            defaultValue={localFormData.references}
             placeholder="Please be explicit as possible. you are encouraged to reference an existing work as well as a nonexisting idea"
           />
         </fieldset>
@@ -114,7 +101,6 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             max="2000"
             placeholder="in €"
             required
-            defaultValue={localFormData.tattooBudget}
           />
           <label htmlFor="bookingDate">Choose the wish-date:</label>
           <input
@@ -124,7 +110,6 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             min="01-01-2023"
             max="31-12-2026"
             required
-            defaultValue={localFormData.bookingDate}
           />
           <label htmlFor="references">Health conditions:</label>
           <textarea
@@ -134,7 +119,6 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
             cols="50"
             placeholder="Please indicate if you have any medical conditions, as it may be necessary for me to take appropriate measures to ensure your well-being and mine. Your response will be kept confidential.(e.g. low blood sugar, bloodborne diseases, ..)"
             required
-            defaultValue={localFormData.medicalInfo}
           />
         </fieldset>
         <h3>Payment</h3>
@@ -143,16 +127,16 @@ export default function Form({ onSubmit, localFormData, setLocalFormData }) {
           fill and submit the appointment request form. Any submitted form
           without having a corresponding payment reference will be disregarded.
         </p>
-        <fieldset>
-          <legend>Payment Link</legend>
-          <Link href="https://www.paypal.com/paypalme/jumisu4u/100EUR">
-            click here to be redirected
-          </Link>
-        </fieldset>
         <label htmlFor="range">How serious are you about this booking?</label>{" "}
         <input className="input--range" type="range" min="0" max="200" />
         <button>Submit</button>
       </form>
+      <fieldset>
+        <legend>Deposit Link</legend>
+        <Link href="https://www.paypal.com/paypalme/jumisu4u/100EUR">
+          click here to pay the deposit for completing your booking
+        </Link>
+      </fieldset>
     </div>
   );
 }

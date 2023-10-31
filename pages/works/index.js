@@ -4,7 +4,6 @@ import EditForm from "@/components/EditForm";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import useLocalStorageState from "use-local-storage-state";
 
 export default function WorksPage() {
   const router = useRouter();
