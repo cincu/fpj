@@ -4,7 +4,9 @@ import logo from "../public/logo_1.png";
 export default function Home() {
   return (
     <>
-      <Image className="logo" src={logo} width={550} alt="Logo Png" />
+      <div className="logo--container">
+        <Image className="logo" src={logo} width={550} alt="Logo Png" />
+      </div>
       <div className="div--intro">
         <Link className="link--navigation" href="./contact-me">
           booking

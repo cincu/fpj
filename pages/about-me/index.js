@@ -3,8 +3,7 @@ import Link from "next/link";
 export default function AboutMe() {
   return (
     <>
-      <hr className="breaker--hr" />
-
+      <hr />
       <Link href="/works" className="back--button">
         ↽
       </Link>

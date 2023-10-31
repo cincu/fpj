@@ -7,47 +7,6 @@
   --title-font: "Audiowide", sans-serif;
   --text-font: "Jura", sans-serif;
 }
-
-/* * {
-  margin: 0;
-  padding: 0; bibibibiopbobibo
-} */
-
-.div--navigation {
-  position: relative;
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.logo {
-  padding: 5rem 0rem 5rem 0rem;
-}
-.logo--small {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2rem;
-}
-a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-family: var(--title-font);
-}
-a:hover {
-  color: var(--text-contrast-color);
-}
-.back--button {
-  position: relative;
-  background-color: transparent;
-  font-size: 3rem;
-  font-family: var(--text-font);
-  color: var(--primary-color);
-}
-.back--button:hover {
-  background-color: initial;
-}
-
 body {
   font-size: 1.2rem;
   display: flex;
@@ -58,14 +17,36 @@ body {
   justify-content: center;
   margin: 0rem 6rem 6rem 6rem;
 }
-h2 {
+
+.back--button {
+  position: relative;
+  background-color: transparent;
+  font-size: 3rem;
+  font-family: var(--text-font);
   color: var(--primary-color);
+}
+
+.back--button:hover {
+  background-color: initial;
+}
+a {
+  text-decoration: none;
+  color: var(--text-color);
   font-family: var(--title-font);
 }
+a:hover {
+  color: var(--text-contrast-color);
+}
+h2 {
+  color: var(--text-color);
+  font-family: var(--title-font);
+}
+
 h3 {
   font-family: var(--title-font);
-  color: var(--text-color);
+  color: var(--primary-color);
 }
+
 button {
   padding: 0.8rem;
   width: 6rem;
@@ -76,12 +57,36 @@ button {
   font-family: var(--title-font);
   text-align: center;
 }
-
 button:hover {
   background-color: var(--text-contrast-color);
 }
+hr {
+  height: 0.1rem;
+  width: 70%;
+  background-color: var(--text-color);
+  box-shadow: none;
+  border: none;
+}
 
-/* USER STORY 0 ENTRANCE PAGE*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
+/* 00-00 HOME PAGE */
+.logo--small {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+}
+
+.logo--container {
+  width: 100%;
+  position: unset;
+}
+.logo {
+  padding: 5rem 0rem 5rem 0rem;
+  object-fit: contain;
+  width: 100%;
+  position: relative;
+  height: unset;
+}
 .div--intro {
   display: flex;
   justify-content: space-around;
@@ -93,7 +98,6 @@ button:hover {
   color: var(--primary-color);
   font-family: var(--title-font);
 }
-
 .link--navigation::after {
   content: "";
   position: absolute;
@@ -115,24 +119,11 @@ button:hover {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-.title--home {
-  font-size: 1.2rem;
-}
-/* USER STORY 1 FORM*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
-.paragraph--center {
-  text-indent: 2rem;
-  text-align: center;
-  letter-spacing: 0.16rem;
-  font-size: 1.2rem;
-}
-.paragraph--payment {
-  width: 100%;
-  text-align: left;
-}
+
+/* USER STORY 1 BOOKING FORM ABOUT ME *****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
 strong {
   font-size: 1.6rem;
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -169,231 +160,8 @@ textarea:focus,
 select:focus {
   border: 2px solid black;
 }
-.div--seriousness {
-  display: flex;
-  flex-direction: column;
-}
-.input--range {
-  accent-color: black;
-}
 
-/* USER STORY 2 WORKS GRID*****-*_*_-*_*_-*_*_-*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
-.filterbar {
-  /* position: fixed; */
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-  gap: 5rem;
-  align-items: center;
-  margin-bottom: 5rem;
-}
-.simple-shape-two {
-  background-color: var(--primary-color);
-  color: var(--text-contrast-color);
-  padding: 2rem;
-}
-.cards--container {
-  height: 50rem;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-.button--navigation {
-  display: inline-block;
-  padding: 0.5rem;
-  cursor: pointer;
-  text-align: center;
-  outline: none;
-  color: var(--text-color);
-  background-color: white;
-  border: none;
-  box-shadow: 0 1px var(--text-color);
-  font-family: var(--title-font);
-}
-
-.button--navigation:hover {
-  background-color: var(--text-contrast-color);
-}
-ul {
-  margin: 0;
-  padding: 0;
-  margin-inline-start: 0;
-  padding-inline-start: 0;
-}
-.button--navigation:active {
-  transform: translateY(4px);
-}
-
-/* USER STORY 3 DETAILS *****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
-.buttons--container {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.card--container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem;
-}
-
-.btn:hover {
-  opacity: 1;
-}
-.breaker--hr {
-  height: 0.1rem;
-  width: 70%;
-  background-color: var(--text-color);
-  box-shadow: none;
-  border: none;
-}
+/* hr works */
 .padded {
   margin-bottom: 4rem;
-}
-.align--right {
-  text-align: right;
-}
-/* USER STORY ADMIN*****-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_-*_*_*/
-.card--card {
-  position: relative;
-}
-.container--admin {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.crud {
-  box-shadow: 3px 3px 1px blueviolet;
-}
-.form--edit {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 0.05rem;
-}
-
-.div--center {
-  margin: auto;
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* login buttons that have animation */
-.login--header {
-  font-size: 1.6rem;
-}
-.login {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  font-size: 1rem;
-  padding: 0.5rem;
-  width: 10rem;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-  position: relative;
-}
-
-.login span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.login span:after {
-  content: "\00bb";
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.login:hover span {
-  padding-right: 25px;
-}
-
-.login:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-@media only screen and (max-width: 601px) {
-  .logo {
-    width: 17rem;
-    height: 15.3rem;
-    padding-top: 6rem;
-  }
-  .link--navigation {
-    font-size: 0.95rem;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* font-size: 1.6rem; */
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    padding: 4rem;
-  }
-}
-
-.sidebar {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  height: 25%;
-  width: 0;
-  background-color: var(--primary-color);
-  display: flex;
-  flex-direction: column;
-  line-height: 3rem;
-  text-align: center;
-  justify-content: center;
-  transition: width 0.3s, left 0.3s; /* Transition for smooth animation */
-}
-
-.closebtn {
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  background-color: transparent;
-}
-.closebtn:hover {
-  background-color: initial;
-}
-
-.openbtn {
-  font-size: 1.8rem;
-  cursor: pointer;
-  background-color: transparent;
-  color: var(--primary-color);
-}
-
-/* When the sidebar is open, expand the width to 10rem */
-.sidebar.open {
-  width: 6rem;
-  padding: 1rem;
-  height: 100%;
-  z-index: 1;
 }

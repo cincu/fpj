@@ -1,3 +1,5 @@
+import styles from "./EditForm.module.css";
+
 export default function EditForm({ onSubmit, defaultData, formName }) {
   function handleSubmit(event) {
     event.preventDefault();

@@ -5,8 +5,8 @@ export default function termsAndConditionsPage() {
       <Link href="/contact-me" className="back--button">
         ↽
       </Link>
-      <hr className="breaker--hr" />
-      <div className="container">
+      <hr />
+      <div>
         <h2>Terms and Conditions</h2>
         <h3>Health and Safety</h3>
         Client Health: Clients must disclose any health conditions, allergies,

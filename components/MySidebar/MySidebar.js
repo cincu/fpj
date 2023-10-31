@@ -1,16 +1,23 @@
+import styles from "./MySidebar.module.css";
 import { useState } from "react";
 import Link from "next/link";
 export default function MySidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+    <div className={`${styles["sidebar"]} ${sidebarOpen ? ["open"] : ""}`}>
       {sidebarOpen ? (
-        <button className="closebtn" onClick={() => setSidebarOpen(false)}>
+        <button
+          className={styles["closebtn"]}
+          onClick={() => setSidebarOpen(false)}
+        >
           x
         </button>
       ) : (
-        <button className="openbtn" onClick={() => setSidebarOpen(true)}>
+        <button
+          className={styles["openbtn"]}
+          onClick={() => setSidebarOpen(true)}
+        >
           ☰
         </button>
       )}

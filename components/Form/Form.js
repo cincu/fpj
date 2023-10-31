@@ -1,5 +1,6 @@
-// import { useState } from "react";
+import styles from "./Form.module.css";
 import Link from "next/link";
+
 export default function Form({ onSubmit }) {
   async function handleSubmit(event) {
     event.preventDefault();
@@ -9,14 +10,14 @@ export default function Form({ onSubmit }) {
     event.target.reset();
   }
   return (
-    <div className="container">
+    <div>
       <form
         action={process.env.SENDER_MAIL}
         method="post"
         onSubmit={handleSubmit}
       >
         <h3>Tattoo appointment request</h3>
-        <p className="paragraph--payment">
+        <p className={styles["paragraph--payment"]}>
           Read <Link href="./terms-and-conditions">terms and conditions </Link>
           before you start filling the form. Fill out this as explicit as
           possible.
@@ -122,13 +123,18 @@ export default function Form({ onSubmit }) {
           />
         </fieldset>
         <h3>Payment</h3>
-        <p className="paragraph--payment">
+        <p className={styles["paragraph--payment"]}>
           Use this link to transfer the deposit. Later you can return this page,
           fill and submit the appointment request form. Any submitted form
           without having a corresponding payment reference will be disregarded.
         </p>
         <label htmlFor="range">How serious are you about this booking?</label>{" "}
-        <input className="input--range" type="range" min="0" max="200" />
+        <input
+          className={styles["input--range"]}
+          type="range"
+          min="0"
+          max="200"
+        />
         <button>Submit</button>
       </form>
       <fieldset>

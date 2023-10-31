@@ -1,0 +1,40 @@
+.sidebar {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  height: 25%;
+  width: 0;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  line-height: 3rem;
+  text-align: center;
+  justify-content: center;
+  transition: width 0.3s, left 0.3s; /* Transition for smooth animation */
+}
+
+.closebtn {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+.closebtn:hover {
+  background-color: initial;
+}
+
+.openbtn {
+  font-size: 1.8rem;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+/* When the sidebar is open, expand the width to 10rem */
+.sidebar.open {
+  width: 6rem;
+  padding: 1rem;
+  height: 100%;
+  z-index: 1;
+}

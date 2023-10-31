@@ -1,0 +1,32 @@
+.filterbar {
+  /* position: fixed; */
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.button--navigation {
+  display: inline-block;
+  padding: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  color: var(--text-color);
+  background-color: white;
+  border: none;
+  box-shadow: 0 1px var(--text-color);
+  font-family: var(--title-font);
+}
+
+.button--navigation:hover {
+  background-color: var(--text-contrast-color);
+}
+.button--navigation:active {
+  transform: translateY(4px);
+}
+.crud {
+  box-shadow: 3px 3px 1px blueviolet;
+}

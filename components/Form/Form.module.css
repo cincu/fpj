@@ -1,0 +1,11 @@
+.paragraph--payment {
+  width: 100%;
+  text-align: left;
+}
+.div--seriousness {
+  display: flex;
+  flex-direction: column;
+}
+.input--range {
+  accent-color: black;
+}

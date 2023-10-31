@@ -1,0 +1,9 @@
+.form--edit {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.05rem;
+}
+.crud {
+  box-shadow: 3px 3px 1px blueviolet;
+}
