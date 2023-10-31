@@ -4,7 +4,7 @@ export default async function handler(request, response) {
   if (request.method === "POST") {
     const { formData } = request.body;
     const transporter = nodemailer.createTransport({
-      service: "Gmail",
+      service: "outlook",
       port: 465,
       secure: true,
       auth: {
@@ -12,6 +12,19 @@ export default async function handler(request, response) {
         pass: process.env.SENDER_PASS,
       },
     });
+    await new Promise((resolve, reject) => {
+      // verify connection configuration
+      transporter.verify(function (error, success) {
+        if (error) {
+          console.log(error);
+          reject(error);
+        } else {
+          console.log("Server is ready to take our messages");
+          resolve(success);
+        }
+      });
+    });
+
     const mailOptions = {
       from: process.env.SENDER_MAIL,
       to: process.env.RECEIVER_MAIL,
