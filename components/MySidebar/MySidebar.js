@@ -5,7 +5,7 @@ export default function MySidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className={`${styles["sidebar"]} ${sidebarOpen ? ["open"] : ""}`}>
+    <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
       {sidebarOpen ? (
         <button
           className={styles["closebtn"]}

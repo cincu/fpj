@@ -32,12 +32,12 @@ export default function AboutMePage() {
     }
   }
   return (
-    <>
+    <div className="div--control">
       <Form
         onSubmit={addAppointment}
         localFormData={localFormData}
         setLocalFormData={setLocalFormData}
       />
-    </>
+    </div>
   );
 }

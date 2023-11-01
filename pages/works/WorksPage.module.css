@@ -5,7 +5,9 @@
   flex-direction: row;
   gap: 5rem;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  position: relative;
 }
 
 .button--navigation {
@@ -29,4 +31,13 @@
 }
 .crud {
   box-shadow: 3px 3px 1px blueviolet;
+}
+
+@media screen and (max-width: 480px) {
+  .filterbar {
+    gap: 1rem;
+  }
+  .button--navigation {
+    width: 5rem;
+  }
 }

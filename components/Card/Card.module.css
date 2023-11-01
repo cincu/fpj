@@ -15,3 +15,16 @@
   justify-content: space-between;
   gap: 1rem;
 }
+
+@media screen and (max-width: 480px) {
+  .card--container {
+    width: 80%;
+    position: unset;
+  }
+  .image--detail {
+    object-fit: contain;
+    width: 100%;
+    position: relative;
+    height: unset;
+  }
+}

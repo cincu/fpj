@@ -53,7 +53,6 @@ export default function WorksPage() {
   if (!filteredImages) return;
   return (
     <div>
-      <hr className={styles.padded} />
       <div className={styles.filterbar}>
         <button
           className={styles["button--navigation"]}

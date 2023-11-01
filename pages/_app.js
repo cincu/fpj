@@ -24,14 +24,17 @@ export default function App({ Component, pageProps }) {
     >
       {navigationRender && <MySidebar />}
       {navigationRender && (
-        <Link href="/">
-          <Image
-            className="logo--small"
-            src={logo}
-            width={200}
-            alt="Logo Png"
-          />
-        </Link>
+        <>
+          <Link href="/">
+            <Image
+              className="logo--small"
+              src={logo}
+              width={200}
+              alt="Logo Png"
+            />
+          </Link>
+          <hr />
+        </>
       )}
       <SessionProvider session={pageProps.session}>
         <Component {...pageProps} />

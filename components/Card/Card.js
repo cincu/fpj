@@ -43,9 +43,14 @@ export default function Card({ image }) {
           yMax: 200,
         }}
       >
-        <img alt={image.title} width={500} src={image.imageUrl} />
+        <img
+          class={styles["image--detail"]}
+          alt={image.title}
+          width={500}
+          src={image.imageUrl}
+        />
       </MapInteractionCSS>
-      <h2>{image.title}</h2>
+      <h3>{image.title}</h3>
       {image.category === "graphics" && (
         <div>
           <hr />
