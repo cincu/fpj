@@ -1,7 +1,7 @@
 import Card from "@/components/Card/Card";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import EditForm from "@/components/EditForm";
+import EditForm from "@/components/EditForm/EditForm";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 export default function WorksDetailsPage() {

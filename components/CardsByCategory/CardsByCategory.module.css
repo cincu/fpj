@@ -1,0 +1,19 @@
+.cards--container {
+  height: 50rem;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.card--card {
+  position: relative;
+}
+.container--admin {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

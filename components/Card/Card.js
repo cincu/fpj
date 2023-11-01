@@ -1,3 +1,5 @@
+import styles from "./Card.module.css";
+
 import React from "react";
 import Link from "next/link";
 import { MapInteractionCSS } from "react-map-interaction";
@@ -27,7 +29,7 @@ export default function Card({ image }) {
   };
 
   return (
-    <div className="card--container">
+    <div className={styles["card--container"]}>
       <MapInteractionCSS
         showControls
         defaultValue={{
@@ -41,35 +43,35 @@ export default function Card({ image }) {
           yMax: 200,
         }}
       >
-        <img alt={image.title} width={500} src={image.imageUrl} />
+        <img
+          class={styles["image--detail"]}
+          alt={image.title}
+          width={500}
+          src={image.imageUrl}
+        />
       </MapInteractionCSS>
-      <h2>{image.title}</h2>
+      <h3>{image.title}</h3>
       {image.category === "graphics" && (
-        <div className="graphic--container">
-          <hr className="breaker--hr" />
+        <div>
+          <hr />
           <p>{image.availableForms}</p>
         </div>
       )}
 
       {image.category === "tattoo" && (
-        <div className="tattoo--container">
-          <hr className="breaker--hr" />
-          <p className="align--right">{image.dateOfTattoo}</p>
-          <p className="align--right">{image.durationOfTattoo}</p>
+        <div>
+          <hr />
+          <p className={styles["align--right"]}>{image.dateOfTattoo}</p>
+          <p className={styles["align--right"]}>{image.durationOfTattoo}</p>
           <div className="buttons--container">
             <button
               action={process.env.SENDER_MAIL}
               method="post"
-              className="button--group"
               onClick={handleAppreciate}
             >
               show interest
             </button>
-            <button
-              className="button--group"
-              id={image.title}
-              onClick={handleCopyToClipboard}
-            >
+            <button id={image.title} onClick={handleCopyToClipboard}>
               reference
             </button>
           </div>
@@ -77,10 +79,10 @@ export default function Card({ image }) {
       )}
 
       {image.category === "shop" && (
-        <div className="shop--container">
-          <hr className="breaker--hr" />
-          <p className="align--right">Price : {image.price}</p>
-          <div className="buttons--container">
+        <div>
+          <hr />
+          <p className={styles["align--right"]}>Price : {image.price}</p>
+          <div className={styles["buttons--container"]}>
             <Link href="/payment-page">
               <button>order now</button>
             </Link>

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import styles from "./CardsByCategory.module.css";
+
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
@@ -14,19 +16,15 @@ export default function CardsByCategory({ images }) {
   }
 
   return (
-    <div className="cards--container">
+    <div className={styles["cards--container"]}>
       {images.map((image) => (
-        <div className="card--card" key={image.id}>
+        <div className={styles["card--card"]} key={image._id}>
           <Link href={`/works/${image._id}`} image={image}>
             <img alt={image.title} width={250} src={image.imageUrl} />
           </Link>
-          <div className="container--admin">
+          <div className={styles["container--admin"]}>
             {session && (
-              <button
-                onClick={() => deleteWork(image._id)}
-                type="button"
-                className="crud button--delete"
-              >
+              <button onClick={() => deleteWork(image._id)} type="button">
                 -
               </button>
             )}

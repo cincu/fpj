@@ -1,0 +1,43 @@
+.filterbar {
+  /* position: fixed; */
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.button--navigation {
+  display: inline-block;
+  padding: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  color: var(--text-color);
+  background-color: white;
+  border: none;
+  box-shadow: 0 1px var(--text-color);
+  font-family: var(--title-font);
+}
+
+.button--navigation:hover {
+  background-color: var(--text-contrast-color);
+}
+.button--navigation:active {
+  transform: translateY(4px);
+}
+.crud {
+  box-shadow: 3px 3px 1px blueviolet;
+}
+
+@media screen and (max-width: 480px) {
+  .filterbar {
+    gap: 1rem;
+  }
+  .button--navigation {
+    width: 5rem;
+  }
+}

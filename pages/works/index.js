@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import CardsByCategory from "@/components/CardsByCategory/CardsByCategory";
-import EditForm from "@/components/EditForm";
+import EditForm from "@/components/EditForm/EditForm";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import styles from "./WorksPage.module.css";
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function WorksPage() {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR("/api/works", {
-    fallbackData: [],
-  });
+
+  const { data, error, isLoading } = useSWR("/api/works", fetcher);
   const { data: session } = useSession();
   const [filteredImages, setFilteredImages] = useState();
   console.log("session is:", session);
   // set the initial state to "graphics"
   const [selectedCategory, setSelectedCategory] = useState("graphics");
+  const [activeButton, setActiveButton] = useState(selectedCategory);
 
   //state for the add form visibility
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -31,7 +33,6 @@ export default function WorksPage() {
     }
   }
   // state to track the currently selected button
-  const [activeButton, setActiveButton] = useState(selectedCategory);
 
   // Function to handle button clicks and update the selected category
   const handleCategorySelect = (category) => {
@@ -48,15 +49,13 @@ export default function WorksPage() {
   }, [data, selectedCategory]);
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div className="simple-shape-two">loading...</div>;
+  if (isLoading) return <div>loading...</div>;
   if (!filteredImages) return;
   return (
-    <div className="container">
-      <hr className="breaker--hr padded" />
-
-      <div className="filterbar">
+    <div>
+      <div className={styles.filterbar}>
         <button
-          className="button--navigation"
+          className={styles["button--navigation"]}
           onClick={() => handleCategorySelect("graphics")}
           style={
             activeButton === "graphics"
@@ -67,7 +66,7 @@ export default function WorksPage() {
           graphics
         </button>
         <button
-          className="button--navigation"
+          className={styles["button--navigation"]}
           onClick={() => handleCategorySelect("tattoo")}
           style={
             activeButton === "tattoo"
@@ -78,7 +77,7 @@ export default function WorksPage() {
           tattoos
         </button>
         <button
-          className="button--navigation"
+          className={styles["button--navigation"]}
           onClick={() => handleCategorySelect("shop")}
           style={
             activeButton === "shop"
@@ -92,7 +91,7 @@ export default function WorksPage() {
           <button
             onClick={() => setIsFormVisible((prev) => !prev)} // Show the form on button click
             type="button"
-            className="crud button--add"
+            className={styles.crud}
           >
             +
           </button>

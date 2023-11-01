@@ -1,5 +1,6 @@
-// import { useState } from "react";
+import styles from "./Form.module.css";
 import Link from "next/link";
+
 export default function Form({ onSubmit }) {
   async function handleSubmit(event) {
     event.preventDefault();
@@ -9,14 +10,14 @@ export default function Form({ onSubmit }) {
     event.target.reset();
   }
   return (
-    <div className="container">
+    <div>
       <form
         action={process.env.SENDER_MAIL}
         method="post"
         onSubmit={handleSubmit}
       >
         <h3>Tattoo appointment request</h3>
-        <p className="paragraph--payment">
+        <p className={styles["paragraph--payment"]}>
           Read <Link href="./terms-and-conditions">terms and conditions </Link>
           before you start filling the form. Fill out this as explicit as
           possible.
@@ -81,14 +82,16 @@ export default function Form({ onSubmit }) {
             placeholder="cm x cm"
           />
           <label htmlFor="references">References:</label>
-          <textarea
-            id="references"
-            name="references"
-            rows="6"
-            cols="50"
-            required
-            placeholder="Please be explicit as possible. you are encouraged to reference an existing work as well as a nonexisting idea"
-          />
+          <div className={styles["div--textarea"]}>
+            <textarea
+              id="references"
+              name="references"
+              rows="6"
+              cols="50"
+              required
+              placeholder="Please be explicit as possible. you are encouraged to reference an existing work as well as a nonexisting idea"
+            />
+          </div>
         </fieldset>
         <fieldset>
           <legend>Appointment Details</legend>
@@ -112,31 +115,38 @@ export default function Form({ onSubmit }) {
             required
           />
           <label htmlFor="references">Health conditions:</label>
-          <textarea
-            id="medicalInfo"
-            name="medicalInfo"
-            rows="4"
-            cols="50"
-            placeholder="Please indicate if you have any medical conditions, as it may be necessary for me to take appropriate measures to ensure your well-being and mine. Your response will be kept confidential.(e.g. low blood sugar, bloodborne diseases, ..)"
-            required
-          />
+          <div className={styles["div--textarea"]}>
+            <textarea
+              id="medicalInfo"
+              name="medicalInfo"
+              rows="4"
+              cols="50"
+              placeholder="Please indicate if you have any medical conditions, as it may be necessary for me to take appropriate measures to ensure your well-being and mine. Your response will be kept confidential.(e.g. low blood sugar, bloodborne diseases, ..)"
+              required
+            />
+          </div>
         </fieldset>
-        <h3>Payment</h3>
-        <p className="paragraph--payment">
-          Use this link to transfer the deposit. Later you can return this page,
-          fill and submit the appointment request form. Any submitted form
-          without having a corresponding payment reference will be disregarded.
-        </p>
         <label htmlFor="range">How serious are you about this booking?</label>{" "}
-        <input className="input--range" type="range" min="0" max="200" />
+        <input
+          className={styles["input--range"]}
+          type="range"
+          min="0"
+          max="200"
+        />
         <button>Submit</button>
+        <fieldset>
+          <legend>Payment</legend>
+          <h4>
+            <Link href="https://www.paypal.com/paypalme/jumisu4u/100EUR">
+              click here to transfer the deposit after you submit the form
+            </Link>
+          </h4>
+          <p className={styles["paragraph--payment"]}>
+            Do not forget to reference your name or instagram handle on the
+            transfer.
+          </p>
+        </fieldset>
       </form>
-      <fieldset>
-        <legend>Deposit Link</legend>
-        <Link href="https://www.paypal.com/paypalme/jumisu4u/100EUR">
-          click here to pay the deposit for completing your booking
-        </Link>
-      </fieldset>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.paragraph--payment {
+  width: 100%;
+  text-align: left;
+}
+.div--textarea {
+  width: 100%;
+  position: unset;
+}
+.input--range {
+  accent-color: black;
+}
