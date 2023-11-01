@@ -37,7 +37,7 @@ export default function WorksDetailsPage() {
   return (
     <>
       <Link href="/works" className="back--button">
-        ↽
+        〈
       </Link>
       <Card image={currentImage} />
       {session && (

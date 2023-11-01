@@ -19,9 +19,10 @@ body {
 
 .back--button {
   position: fixed;
-  top: 0;
+  top: 12rem;
+  left: 1.2rem;
   background-color: transparent;
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: var(--text-font);
   color: var(--primary-color);
 }
@@ -198,12 +199,17 @@ select:focus {
 
 @media screen and (max-width: 480px) {
   .sidebar.open {
-    background-color: transparent;
+    background-color: white;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     width: 100%;
     padding: 0;
   }
   .sidebar {
-    background-color: transparent;
+    background-color: white;
+  }
+  .back--button {
+    top: 12rem;
+    color: var(--primary-color);
   }
 }

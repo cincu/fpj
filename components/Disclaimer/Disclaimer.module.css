@@ -3,4 +3,12 @@
   text-align: center;
   letter-spacing: 0.16rem;
   font-size: 1.2rem;
+  padding: 5rem;
+}
+
+@media screen and (max-width: 480px) {
+  .paragraph--center {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
 }
