@@ -10,12 +10,10 @@
   text-align: right;
 }
 /* buttons below image */
-.buttons--container {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
 
+.large--divider {
+  width: 25rem;
+}
 @media screen and (max-width: 480px) {
   .card--container {
     width: 80%;
@@ -26,5 +24,8 @@
     width: 100%;
     position: relative;
     height: unset;
+  }
+  .large--divider {
+    width: 12rem;
   }
 }

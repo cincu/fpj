@@ -197,6 +197,13 @@ select:focus {
   padding: 1rem;
 }
 
+.buttons--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: space-around;
+  gap: 2rem;
+}
 @media screen and (max-width: 480px) {
   .sidebar.open {
     background-color: white;
