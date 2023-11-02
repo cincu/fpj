@@ -44,7 +44,7 @@ export default function Card({ image }) {
         }}
       >
         <img
-          class={styles["image--detail"]}
+          className={styles["image--detail"]}
           alt={image.title}
           width={500}
           src={image.imageUrl}
@@ -60,7 +60,7 @@ export default function Card({ image }) {
 
       {image.category === "tattoo" && (
         <div>
-          <hr />
+          <hr className={styles["large--divider"]} />
           <p className={styles["align--right"]}>{image.dateOfTattoo}</p>
           <p className={styles["align--right"]}>{image.durationOfTattoo}</p>
           <div className="buttons--container">
@@ -69,7 +69,7 @@ export default function Card({ image }) {
               method="post"
               onClick={handleAppreciate}
             >
-              show interest
+              love
             </button>
             <button id={image.title} onClick={handleCopyToClipboard}>
               reference
