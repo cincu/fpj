@@ -112,7 +112,9 @@ hr {
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
-
+.link--navigation:hover {
+  color: var(--text-color);
+}
 .link--navigation:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
