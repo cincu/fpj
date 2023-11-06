@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import styles from "./WorksPage.module.css";
+import useLocalStorageState from "use-local-storage-state";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -16,7 +17,9 @@ export default function WorksPage() {
   const [filteredImages, setFilteredImages] = useState();
   console.log("session is:", session);
   // set the initial state to "graphics"
-  const [selectedCategory, setSelectedCategory] = useState("graphics");
+  const [selectedCategory, setSelectedCategory] = useLocalStorageState(
+    "graphics" || selectedCategory
+  );
   const [activeButton, setActiveButton] = useState(selectedCategory);
 
   //state for the add form visibility
