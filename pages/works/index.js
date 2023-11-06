@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import styles from "./WorksPage.module.css";
+
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function WorksPage() {
@@ -59,7 +60,7 @@ export default function WorksPage() {
           onClick={() => handleCategorySelect("graphics")}
           style={
             activeButton === "graphics"
-              ? { backgroundColor: "black", color: "white" }
+              ? { borderBottom: "1px solid black" }
               : {}
           }
         >
@@ -69,9 +70,7 @@ export default function WorksPage() {
           className={styles["button--navigation"]}
           onClick={() => handleCategorySelect("tattoo")}
           style={
-            activeButton === "tattoo"
-              ? { backgroundColor: "black", color: "white" }
-              : {}
+            activeButton === "tattoo" ? { borderBottom: "1px solid black" } : {}
           }
         >
           tattoos
@@ -80,9 +79,7 @@ export default function WorksPage() {
           className={styles["button--navigation"]}
           onClick={() => handleCategorySelect("shop")}
           style={
-            activeButton === "shop"
-              ? { backgroundColor: "black", color: "white" }
-              : {}
+            activeButton === "shop" ? { borderBottom: "1px solid black" } : {}
           }
         >
           shop
