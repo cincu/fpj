@@ -18,7 +18,10 @@ export default function WorksPage() {
   console.log("session is:", session);
   // set the initial state to "graphics"
   const [selectedCategory, setSelectedCategory] = useLocalStorageState(
-    "graphics" || selectedCategory
+    "graphics",
+    {
+      defaultValue: "graphics",
+    }
   );
   const [activeButton, setActiveButton] = useState(selectedCategory);
 
