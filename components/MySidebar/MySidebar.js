@@ -32,6 +32,9 @@ export default function MySidebar() {
           <Link onClick={() => setSidebarOpen(false)} href="/works">
             works
           </Link>
+          <Link onClick={() => setSidebarOpen(false)} href="/shop">
+            shop
+          </Link>
         </>
       )}
     </div>

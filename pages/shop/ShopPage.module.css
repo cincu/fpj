@@ -1,0 +1,68 @@
+.filterbar {
+  /* position: fixed; */
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.button--navigation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -1px;
+  background-color: var(--primary-color);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  left: 0;
+}
+
+.button--navigation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.button--navigation:active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.button--navigation {
+  display: inline-block;
+  padding: 0.5rem;
+  cursor: pointer;
+  left: 0;
+  text-align: center;
+  outline: none;
+  color: var(--text-color);
+  background-color: white;
+  border: none;
+  font-family: var(--title-font);
+  position: relative;
+}
+.button--navigation:hover {
+  background-color: initial;
+}
+.button--navigation:active {
+  transform: translateY(4px);
+}
+.button--navigation--active {
+  border-bottom: solid 2px black;
+}
+.crud {
+  box-shadow: 3px 3px 1px blueviolet;
+}
+
+@media screen and (max-width: 480px) {
+  .filterbar {
+    gap: 1rem;
+  }
+  .button--navigation {
+    width: 5rem;
+  }
+}

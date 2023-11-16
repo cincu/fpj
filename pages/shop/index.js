@@ -4,25 +4,22 @@ import EditForm from "@/components/EditForm/EditForm";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import styles from "./WorksPage.module.css";
+import styles from "./ShopPage.module.css";
 import useLocalStorageState from "use-local-storage-state";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
-export default function WorksPage() {
+export default function ShopPage() {
   const router = useRouter();
 
-  const { data, error, isLoading } = useSWR("/api/works", fetcher);
+  const { data, error, isLoading } = useSWR("/api/shop", fetcher);
   const { data: session } = useSession();
   const [filteredImages, setFilteredImages] = useState();
   console.log("session is:", session);
   // set the initial state to "graphics"
-  const [selectedCategory, setSelectedCategory] = useLocalStorageState(
-    "works",
-    {
-      defaultValue: "graphics",
-    }
-  );
+  const [selectedCategory, setSelectedCategory] = useLocalStorageState("shop", {
+    defaultValue: "shop",
+  });
   const [activeButton, setActiveButton] = useState(selectedCategory);
 
   //state for the add form visibility
@@ -30,13 +27,13 @@ export default function WorksPage() {
 
   //add form submit
   async function addWork(id) {
-    const response = await fetch(`/api/works/${id}`, {
+    const response = await fetch(`/api/shop/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(id),
     });
     if (response.ok) {
-      router.push("/works");
+      router.push("/shop");
     }
   }
   // state to track the currently selected button
@@ -63,23 +60,12 @@ export default function WorksPage() {
       <div className={styles.filterbar}>
         <button
           className={styles["button--navigation"]}
-          onClick={() => handleCategorySelect("graphics")}
+          onClick={() => handleCategorySelect("shop")}
           style={
-            activeButton === "graphics"
-              ? { borderBottom: "1px solid black" }
-              : {}
+            activeButton === "shop" ? { borderBottom: "1px solid black" } : {}
           }
         >
-          graphics
-        </button>
-        <button
-          className={styles["button--navigation"]}
-          onClick={() => handleCategorySelect("tattoo")}
-          style={
-            activeButton === "tattoo" ? { borderBottom: "1px solid black" } : {}
-          }
-        >
-          tattoos
+          shop
         </button>
         {session && (
           <button
