@@ -36,12 +36,12 @@ export default async function handler(request, response) {
     }
 
     // //store the order in mongodb
-    // const order = new Order({
-    //   user_id: request.body.user_id,
-    //   order_price: parseFloat(request.body.order_price),
-    //   order_id: createOrderResponse.result.id,
-    // });
-    // await order.save();
+    const order = new Order({
+      user_id: request.body.user_id,
+      order_price: parseFloat(request.body.order_price),
+      order_id: createOrderResponse.result.id,
+    });
+    await order.save();
     // //check above
 
     response.status(200).json({ success: true, data: { order } });

@@ -27,6 +27,7 @@ export default function Card({ image }) {
       alert("unable to send the mail");
     }
   };
+  const handleAddCart = async () => {};
 
   return (
     <div className={styles["card--container"]}>
@@ -81,11 +82,25 @@ export default function Card({ image }) {
       {image.category === "shop" && (
         <div>
           <hr />
-          <p className={styles["align--right"]}>Price : {image.price}</p>
-          <div className={styles["buttons--container"]}>
-            <Link href="/payment-page">
-              <button>order now</button>
-            </Link>
+          <div className="buttons--container">
+            <button>
+              <p className={styles["align--right"]}>Price : {image.price}</p>
+            </button>
+            <div className={styles["buttons--container"]}>
+              <Link href="/payment-page">
+                <button>order now</button>
+              </Link>
+              <button>one size</button>
+              <label for="quantity">amount</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                max="10"
+              />
+              <button onClick={handleAddCart}>add to cart</button>
+            </div>
           </div>
         </div>
       )}
