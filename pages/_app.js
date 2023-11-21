@@ -6,10 +6,17 @@ import MySidebar from "@/components/MySidebar/MySidebar";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../public/logo_1.png";
+import { useEffect, useState } from "react";
+import ShoppingCartIcon from "../public/ShoppingCartIcon.svg";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const navigationRender = router.pathname !== "/";
+  const [isCartFull, setIsCartFull] = useState(false);
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem("shoppingCart"));
+    setIsCartFull(cart && cart.length > 0);
+  }, []);
   return (
     <SWRConfig
       value={{
@@ -32,6 +39,9 @@ export default function App({ Component, pageProps }) {
               width={200}
               alt="Logo Png"
             />
+          </Link>
+          <Link href="/cart">
+            <Image width="50" src={ShoppingCartIcon} isFull={isCartFull} />
           </Link>
           <hr />
         </>

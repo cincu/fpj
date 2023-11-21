@@ -1,8 +1,8 @@
 import styles from "./Card.module.css";
-
 import React from "react";
 import Link from "next/link";
 import { MapInteractionCSS } from "react-map-interaction";
+import useLocalStorageState from "use-local-storage-state";
 export default function Card({ image }) {
   const handleCopyToClipboard = async () => {
     try {
@@ -27,7 +27,19 @@ export default function Card({ image }) {
       alert("unable to send the mail");
     }
   };
-  const handleAddCart = async () => {};
+  const handleAddCart = async () => {
+    const quantity = document.getElementById("quantity").value;
+    const cartItem = {
+      id: image.id,
+      title: image.title,
+      quantity: parseInt(quantity, 10),
+      price: image.price,
+      imageUrl: image.imageUrl,
+    };
+    let currentCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+    currentCart.push(cartItem);
+    localStorage.setItem("shoppingCart", JSON.stringify(currentCart));
+  };
 
   return (
     <div className={styles["card--container"]}>
@@ -53,8 +65,8 @@ export default function Card({ image }) {
       </MapInteractionCSS>
       <h3>{image.title}</h3>
       {image.category === "graphics" && (
-        <div>
-          <hr />
+        <div className={styles["buttons--container"]}>
+          <hr className={styles["breake--graphics"]} />
           <p>{image.availableForms}</p>
         </div>
       )}
@@ -83,23 +95,28 @@ export default function Card({ image }) {
         <div>
           <hr />
           <div className="buttons--container">
-            <button>
-              <p className={styles["align--right"]}>Price : {image.price}</p>
-            </button>
+            <p className={styles["align--right"]}>
+              Price :<strong> {image.price}</strong>
+            </p>
             <div className={styles["buttons--container"]}>
-              <Link href="/payment-page">
-                <button>order now</button>
-              </Link>
-              <button>one size</button>
-              <label for="quantity">amount</label>
-              <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                max="10"
-              />
-              <button onClick={handleAddCart}>add to cart</button>
+              <p>one size</p>
+              <form htmlFor="quantity">
+                <label htmlFor="quantity">amount</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  min="1"
+                  max="10"
+                  required
+                />
+                <Link href="/payment-page">
+                  <button>order now</button>
+                </Link>
+                <button type="submit" onClick={handleAddCart}>
+                  add to cart
+                </button>
+              </form>
             </div>
           </div>
         </div>
