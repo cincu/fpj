@@ -29,14 +29,25 @@ export default function Card({ image }) {
   };
   const handleAddCart = async () => {
     const quantity = document.getElementById("quantity").value;
-    const cartItem = {
-      id: image.id,
+    console.log("image", image);
+    let cartItem = {
+      id: image._id,
       title: image.title,
       quantity: parseInt(quantity, 10),
       price: image.price,
       imageUrl: image.imageUrl,
     };
     let currentCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+    let existingItem = currentCart.find((item) => item.id === image._id);
+
+    if (existingItem) {
+      currentCart.splice(currentCart.indexOf(existingItem), 1);
+
+      cartItem = {
+        ...existingItem,
+        quantity: existingItem.quantity + cartItem.quantity,
+      };
+    }
     currentCart.push(cartItem);
     localStorage.setItem("shoppingCart", JSON.stringify(currentCart));
   };
@@ -106,6 +117,7 @@ export default function Card({ image }) {
                   type="number"
                   id="quantity"
                   name="quantity"
+                  defaultValue={1}
                   min="1"
                   max="10"
                   required

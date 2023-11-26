@@ -41,7 +41,12 @@ export default function App({ Component, pageProps }) {
             />
           </Link>
           <Link href="/cart">
-            <Image width="50" src={ShoppingCartIcon} isFull={isCartFull} />
+            <Image
+              width="50"
+              src={ShoppingCartIcon}
+              alt="Shopping Cart"
+              isFull={isCartFull}
+            />
           </Link>
           <hr />
         </>
