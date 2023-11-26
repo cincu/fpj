@@ -2,22 +2,18 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 import axios from "axios";
 export default function PaymentPage() {
-  async function paypalCreateOrder() {
+  const paypalCreateOrder = async () => {
     try {
-      const response = await axios.post("/api/paypal/createorder/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      let response = await axios.post("/api/paypal/createorder", {
         user_id: store.getState().auth.user._id,
         order_price: amountRef.current.value,
       });
       return response.data.data.order.order_id;
     } catch (err) {
-      console.log("error in the paypalCreateOrder function");
+      console.log("error error on the wall");
       return null;
     }
-  }
+  };
 
   async function paypalCaptureOrder(orderID) {
     try {
