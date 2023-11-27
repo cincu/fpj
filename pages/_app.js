@@ -16,7 +16,6 @@ export default function App({ Component, pageProps }) {
   const [isCartFull, setIsCartFull] = useState(false);
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("shoppingCart"));
-    console.log(cart.length);
     setIsCartFull(cart?.length > 0);
   }, []);
   return (
