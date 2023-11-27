@@ -14,10 +14,11 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const navigationRender = router.pathname !== "/";
   const [isCartFull, setIsCartFull] = useState(false);
+  const [cartItems, setCartItems] = useLocalStorageState("shoppingCart", []);
+
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("shoppingCart"));
-    setIsCartFull(cart?.length > 0);
-  }, []);
+    if (cartItems?.length) setIsCartFull(true);
+  }, [cartItems]);
   return (
     <SWRConfig
       value={{
