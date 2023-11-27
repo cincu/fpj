@@ -76,7 +76,7 @@ export default function Card({ image }) {
       </MapInteractionCSS>
       <h3>{image.title}</h3>
       {image.category === "graphics" && (
-        <div className={styles["buttons--container"]}>
+        <div>
           <hr className={styles["breake--graphics"]} />
           <p>{image.availableForms}</p>
         </div>
@@ -106,31 +106,34 @@ export default function Card({ image }) {
         <div>
           <hr />
           <div className="buttons--container">
-            <p className={styles["align--right"]}>
+            <p>
               Price :<strong> {image.price}</strong>
             </p>
-            <div className={styles["buttons--container"]}>
-              <p>one size</p>
-              <form htmlFor="quantity">
-                <label htmlFor="quantity">amount</label>
-                <input
-                  type="number"
-                  id="quantity"
-                  name="quantity"
-                  defaultValue={1}
-                  min="1"
-                  max="10"
-                  required
-                />
-                <Link href="/payment-page">
-                  <button>order now</button>
-                </Link>
-                <button type="submit" onClick={handleAddCart}>
-                  add to cart
-                </button>
-              </form>
-            </div>
+            <p>
+              Available Size/Format: <strong>{image.availableForms}</strong>
+            </p>
+            {image.availableForms.length === 0 && (
+              <p className={styles["button--tag"]}>One Size</p>
+            )}
           </div>
+          <form className={styles["order--form"]} htmlFor="quantity">
+            <label htmlFor="quantity">Amount</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              defaultValue={1}
+              min="1"
+              max="10"
+              required
+            />
+            <Link href="/payment-page">
+              <button>order now</button>
+            </Link>
+            <button type="submit" onClick={handleAddCart}>
+              add to cart
+            </button>
+          </form>
         </div>
       )}
     </div>

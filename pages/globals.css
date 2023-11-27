@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Dosis:wght@200&family=Jura:wght@300&family=Orbitron:wght@500&family=Pixelify+Sans&family=Source+Code+Pro&display=swap");
+@import url("https://fonts.cdnfonts.com/css/ps");
+
 :root {
   --text-color: rgb(91, 91, 91);
   --text-contrast-color: rgb(206, 206, 206);
   --background-color: rgb(255, 255, 255);
   --primary-color: rgb(0, 0, 0);
-  --title-font: "Audiowide", sans-serif;
+  --title-font: "PS", sans-serif;
   --text-font: "Jura", sans-serif;
 }
 body {
@@ -35,6 +37,7 @@ a {
   text-decoration: none;
   color: var(--text-color);
   font-family: var(--title-font);
+  font-size: 0.9rem;
 }
 a:hover {
   color: var(--text-contrast-color);
@@ -50,8 +53,8 @@ h3 {
 }
 
 button {
-  padding: 0.8rem;
-  width: 6rem;
+  padding: 0.5rem;
+  width: 8rem;
   color: var(--text-contrast-color);
   background-color: var(--primary-color);
   border: none;
@@ -189,7 +192,7 @@ select:focus {
 }
 
 .sidebar.open {
-  width: 6rem;
+  width: 7rem;
   padding: 1rem;
   height: 100%;
   z-index: 1;
@@ -197,6 +200,12 @@ select:focus {
 
 .terms-and-conditions {
   padding: 1rem;
+}
+.shoppingcart {
+  position: fixed;
+  right: 4rem;
+  padding: 0.5rem;
+  top: 5rem;
 }
 
 .buttons--container {
