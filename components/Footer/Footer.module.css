@@ -1,0 +1,9 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
+.footerdiv {
+  display: flex;
+  justify-content: center;
+}

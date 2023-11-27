@@ -32,3 +32,12 @@
 .breake--graphics {
   width: 20rem;
 }
+.button--tag {
+  background-color: var(--primary-color);
+  color: var(--text-contrast-color);
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+}
+.order--form {
+  display: flex;
+  flex-direction: row;
+}

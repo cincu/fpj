@@ -1,4 +1,5 @@
 import useLocalStorageState from "use-local-storage-state";
+import styles from "./CartPage.module.css";
 
 export default function ShoppingCartPage() {
   const [cartItems, setCartItems] = useLocalStorageState("shoppingCart", []);
@@ -9,13 +10,13 @@ export default function ShoppingCartPage() {
   };
   return (
     <div>
-      <h2>Shopping Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
+      <div className={styles["main--body"]}>
+        <h3>Shopping Cart</h3>
+      </div>
+      {cartItems?.length > 0 ? (
         <ul>
           {cartItems.map((item) => (
-            <li key={item.id}>
+            <li className={styles["cart--container"]} key={item.id}>
               <img src={item.imageUrl} alt={item.title} width="100" />
               <p>{item.title}</p>
               <p>
@@ -27,7 +28,10 @@ export default function ShoppingCartPage() {
               </button>
             </li>
           ))}
+          <button>check-out</button>
         </ul>
+      ) : (
+        <p>Your cart is empty</p>
       )}
     </div>
   );

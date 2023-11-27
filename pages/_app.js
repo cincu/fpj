@@ -7,7 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../public/logo_1.png";
 import { useEffect, useState } from "react";
-import ShoppingCartIcon from "../public/ShoppingCartIcon.svg";
+import { ShoppingCartIcon } from "../public/ShoppingCartIcon.js";
+import Footer from "@/components/Footer/Footer";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -15,7 +16,8 @@ export default function App({ Component, pageProps }) {
   const [isCartFull, setIsCartFull] = useState(false);
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("shoppingCart"));
-    setIsCartFull(cart && cart.length > 0);
+    console.log(cart.length);
+    setIsCartFull(cart?.length > 0);
   }, []);
   return (
     <SWRConfig
@@ -29,7 +31,14 @@ export default function App({ Component, pageProps }) {
         },
       }}
     >
-      {navigationRender && <MySidebar />}
+      {navigationRender && (
+        <div>
+          <MySidebar />
+          <Link className="openbtn shoppingcart" href="/cart">
+            <ShoppingCartIcon isFull={isCartFull} />
+          </Link>
+        </div>
+      )}
       {navigationRender && (
         <>
           <Link href="/">
@@ -40,20 +49,13 @@ export default function App({ Component, pageProps }) {
               alt="Logo Png"
             />
           </Link>
-          <Link href="/cart">
-            <Image
-              width="50"
-              src={ShoppingCartIcon}
-              alt="Shopping Cart"
-              isFull={isCartFull}
-            />
-          </Link>
           <hr />
         </>
       )}
       <SessionProvider session={pageProps.session}>
         <Component {...pageProps} />
       </SessionProvider>
+      <Footer />
     </SWRConfig>
   );
 }
