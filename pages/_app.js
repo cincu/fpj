@@ -9,7 +9,7 @@ import logo from "../public/logo_1.png";
 import { useEffect, useState } from "react";
 import { ShoppingCartIcon } from "../public/ShoppingCartIcon.js";
 import Footer from "@/components/Footer/Footer";
-
+import useLocalStorageState from "use-local-storage-state";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const navigationRender = router.pathname !== "/";
