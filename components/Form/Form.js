@@ -75,11 +75,19 @@ export default function Form({ onSubmit }) {
           <label htmlFor="tattooSize">Approximate size in cm:</label>
           <input
             type="number"
-            id="tattooSize"
-            name="tattooSize"
+            id="tattooSize Height"
+            name="tattooSize Height"
             min="5"
             max="100"
-            placeholder="cm x cm"
+            placeholder="height"
+          />
+          <input
+            type="number"
+            id="tattooSizeWidth"
+            name="tattooSizeWidth"
+            min="5"
+            max="100"
+            placeholder="width"
           />
           <label htmlFor="references">References:</label>
           <div className={styles["div--textarea"]}>
@@ -97,12 +105,12 @@ export default function Form({ onSubmit }) {
           <legend>Appointment Details</legend>
           <label htmlFor="tattooBudget">Maximum Budget:</label>
           <input
-            type="number"
+            type="text"
             id="tattooBudget"
             name="tattooBudget"
             min="100"
             max="2000"
-            placeholder="in €"
+            placeholder="specificy the currency too"
             required
           />
           <label htmlFor="bookingDate">Choose the wish-date:</label>

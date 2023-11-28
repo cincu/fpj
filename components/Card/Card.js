@@ -96,7 +96,7 @@ export default function Card({ image }) {
               love
             </button>
             <button id={image.title} onClick={handleCopyToClipboard}>
-              reference
+              copy
             </button>
           </div>
         </div>
