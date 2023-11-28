@@ -127,9 +127,6 @@ export default function Card({ image }) {
               max="10"
               required
             />
-            <Link href="/payment-page">
-              <button>order now</button>
-            </Link>
             <button type="submit" onClick={handleAddCart}>
               add to cart
             </button>
