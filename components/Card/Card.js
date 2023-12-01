@@ -1,8 +1,6 @@
 import styles from "./Card.module.css";
 import React from "react";
-import Link from "next/link";
 import { MapInteractionCSS } from "react-map-interaction";
-import useLocalStorageState from "use-local-storage-state";
 export default function Card({ image }) {
   const handleCopyToClipboard = async () => {
     try {
@@ -26,30 +24,6 @@ export default function Card({ image }) {
       console.error("unable to send the mail");
       alert("unable to send the mail");
     }
-  };
-  const handleAddCart = async () => {
-    const quantity = document.getElementById("quantity").value;
-    console.log("image", image);
-    let cartItem = {
-      id: image._id,
-      title: image.title,
-      quantity: parseInt(quantity, 10),
-      price: image.price,
-      imageUrl: image.imageUrl,
-    };
-    let currentCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
-    let existingItem = currentCart.find((item) => item.id === image._id);
-
-    if (existingItem) {
-      currentCart.splice(currentCart.indexOf(existingItem), 1);
-
-      cartItem = {
-        ...existingItem,
-        quantity: existingItem.quantity + cartItem.quantity,
-      };
-    }
-    currentCart.push(cartItem);
-    localStorage.setItem("shoppingCart", JSON.stringify(currentCart));
   };
 
   return (
@@ -127,9 +101,7 @@ export default function Card({ image }) {
               max="10"
               required
             />
-            <button type="submit" onClick={handleAddCart}>
-              add to cart
-            </button>
+            <button type="submit">add to cart</button>
           </form>
         </div>
       )}
