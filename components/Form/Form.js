@@ -16,7 +16,7 @@ export default function Form({ onSubmit }) {
         method="post"
         onSubmit={handleSubmit}
       >
-        <h3>Tattoo appointment request</h3>
+        <h3>Booking</h3>
         <p className={styles["paragraph--payment"]}>
           Read <Link href="./terms-and-conditions">terms and conditions </Link>
           before you start filling the form. Fill out this as explicit as
@@ -97,12 +97,12 @@ export default function Form({ onSubmit }) {
           <legend>Appointment Details</legend>
           <label htmlFor="tattooBudget">Maximum Budget:</label>
           <input
-            type="number"
+            type="text"
             id="tattooBudget"
             name="tattooBudget"
             min="100"
             max="2000"
-            placeholder="in €"
+            placeholder="do not forget indicating the currency"
             required
           />
           <label htmlFor="bookingDate">Choose the wish-date:</label>

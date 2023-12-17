@@ -11,6 +11,7 @@
 
 .openbtn {
   position: fixed;
+  top: 0;
   font-size: 1.8rem;
   cursor: pointer;
   background-color: transparent;

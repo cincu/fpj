@@ -1,6 +1,5 @@
 import styles from "./Card.module.css";
 import React from "react";
-import { MapInteractionCSS } from "react-map-interaction";
 export default function Card({ image }) {
   const handleCopyToClipboard = async () => {
     try {
@@ -28,26 +27,12 @@ export default function Card({ image }) {
 
   return (
     <div className={styles["card--container"]}>
-      <MapInteractionCSS
-        showControls
-        defaultValue={{
-          scale: 1,
-          translation: { x: 0, y: 20 },
-        }}
-        minScale={0.5}
-        maxScale={3}
-        translationBounds={{
-          xMax: 400,
-          yMax: 200,
-        }}
-      >
-        <img
-          className={styles["image--detail"]}
-          alt={image.title}
-          width={500}
-          src={image.imageUrl}
-        />
-      </MapInteractionCSS>
+      <img
+        className={styles["image--detail"]}
+        alt={image.title}
+        width={500}
+        src={image.imageUrl}
+      />
       <h3>{image.title}</h3>
       {image.category === "graphics" && (
         <div>
@@ -70,7 +55,7 @@ export default function Card({ image }) {
               love
             </button>
             <button id={image.title} onClick={handleCopyToClipboard}>
-              reference
+              Copy Id
             </button>
           </div>
         </div>

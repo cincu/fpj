@@ -38,6 +38,9 @@ a {
   color: var(--text-color);
   font-family: var(--title-font);
   font-size: 0.9rem;
+  animation: 0.75s fadeIn;
+  animation-fill-mode: forwards;
+  visibility: hidden;
 }
 a:hover {
   color: var(--text-contrast-color);
@@ -180,7 +183,7 @@ select:focus {
   position: fixed;
   z-index: 1;
   left: 0;
-  height: 25%;
+  height: 100%;
   width: 0;
   background-color: var(--primary-color);
   display: flex;
@@ -188,7 +191,7 @@ select:focus {
   line-height: 3rem;
   text-align: center;
   justify-content: center;
-  transition: width 0.3s, left 0.3s; /* Transition for smooth animation */
+  transition: width 0.2s, left 0.5s; /* Transition for smooth animation */
 }
 
 .sidebar.open {
@@ -229,5 +232,14 @@ select:focus {
   .back--button {
     top: 12rem;
     color: var(--primary-color);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
   }
 }
