@@ -1,6 +1,9 @@
 import styles from "./Card.module.css";
 import React from "react";
+import { useState } from "react";
+import RequestForm from "../RequestForm/RequestForm";
 export default function Card({ image }) {
+  const [isFormVisible, setIsFormVisible] = useState(false);
   const handleCopyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(image.title);
@@ -22,6 +25,26 @@ export default function Card({ image }) {
     } catch (error) {
       console.error("unable to send the mail");
       alert("unable to send the mail");
+    }
+  };
+  const handleSendRequest = async () => {
+    const quantity = document.getElementById("quantity").value;
+    try {
+      await fetch("/api/send-request", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          requestTitle: image.title,
+          requestPrice: image.price,
+          requestQuantity: parseInt(quantity, 10),
+        }),
+      });
+      alert("Request sent! Expect follow-up e-mail for further information");
+    } catch (error) {
+      console.error("unable to send the request");
+      alert("unable to send the request");
     }
   };
 
@@ -86,7 +109,13 @@ export default function Card({ image }) {
               max="10"
               required
             />
-            <button type="submit">add to cart</button>
+            <button
+              type="button"
+              onClick={() => setIsFormVisible((prev) => !prev)}
+            >
+              Buy
+            </button>
+            {isFormVisible && <RequestForm onSubmit={handleSendRequest} />}
           </form>
         </div>
       )}

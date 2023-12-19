@@ -83,7 +83,7 @@ export default function WorksPage() {
         </button>
         {session && (
           <button
-            onClick={() => setIsFormVisible((prev) => !prev)} // Show the form on button click
+            onClick={() => setIsFormVisible((prev) => !prev)}
             type="button"
             className={styles.crud}
           >

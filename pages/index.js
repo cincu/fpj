@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <div className="logo--container">
-        <Image className="logo" src={logo} width={550} alt="Logo Png" />
+        <Image className="logo" src={logo} width={500} alt="Logo Png" />
       </div>
       <div className="div--intro">
         <Link className="link--navigation" href="./contact-me">
