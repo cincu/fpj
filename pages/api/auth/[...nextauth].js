@@ -4,7 +4,7 @@ import clientPromise from "@/db/clientPromise";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import User from "@/db/models/User";
 import dbConnect from "@/db/connect";
-
+import bcrypt from "bcrypt";
 export const authOptions = {
   providers: [
     CredentialsProvider({
@@ -20,18 +20,19 @@ export const authOptions = {
         if (!credentials.username || !credentials.password) {
           return error;
         }
+
         const user = await User.findOne({
-          username: credentials.username,
-          password: credentials.password,
+          where: { username: credentials.username },
         });
 
-        console.log(`${user}logged in successfully`);
-
-        if (user) {
-          return user;
-        } else {
-          return error;
+        if (!user) {
+          return null;
         }
+        const match = await bcrypt.compare(credentials.password, user.password);
+        if (!match) {
+          return null;
+        }
+        return user;
       },
     }),
   ],
