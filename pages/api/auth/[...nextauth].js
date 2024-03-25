@@ -15,32 +15,34 @@ export const authOptions = {
       },
 
       async authorize(credentials, req) {
-        const dbConnectPromise = Promise.resolve(dbConnect());
-        const bcryptComparePromise = Promise.resolve(
-          bcrypt.compare(credentials.password, user.password)
-        );
+        await dbConnect();
 
-        dbConnectPromise.then(() => {
-          if (!credentials.username || !credentials.password) {
-            return { error: "Please provide both username and password" };
-          }
+        if (!credentials.username || !credentials.password) {
+          return { error: "Please provide both username and password" };
+        }
 
-          const user = User.findOne({
+        try {
+          const user = await User.findOne({
             where: { username: credentials.username },
           });
 
           if (!user) {
-            return null;
+            return { error: "User isn't usering" };
           }
 
-          bcryptComparePromise.then((match) => {
-            if (!match) {
-              return null;
-            }
+          const match = await bcrypt.compareSync(
+            credentials.password,
+            user.password
+          );
 
-            return user;
-          });
-        });
+          if (!match) {
+            return { error: "Match isn't matching" };
+          }
+
+          return user;
+        } catch (error) {
+          return { error: "Error occured during authentication" };
+        }
       },
     }),
   ],
