@@ -18,21 +18,31 @@ export const authOptions = {
         await dbConnect();
 
         if (!credentials.username || !credentials.password) {
-          return error;
+          return { error: "Please provide both username and password" };
         }
 
-        const user = await User.findOne({
-          where: { username: credentials.username },
-        });
+        try {
+          const user = await User.findOne({
+            where: { username: credentials.username },
+          });
 
-        if (!user) {
-          return null;
+          if (!user) {
+            return { error: "User isn't usering" };
+          }
+
+          const match = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+
+          if (!match) {
+            return { error: "Match isn't matching" };
+          }
+
+          return user;
+        } catch (error) {
+          return { error: "Error occured during authentication" };
         }
-        const match = await bcrypt.compare(credentials.password, user.password);
-        if (!match) {
-          return null;
-        }
-        return user;
       },
     }),
   ],
