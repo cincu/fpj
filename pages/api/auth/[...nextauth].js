@@ -30,7 +30,7 @@ export const authOptions = {
             return { error: "User isn't usering" };
           }
 
-          const match = await bcrypt.compareSync(
+          const match = await bcrypt.compare(
             credentials.password,
             user.password
           );
