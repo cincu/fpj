@@ -18,7 +18,7 @@ export const authOptions = {
         await dbConnect();
 
         if (!credentials.username || !credentials.password) {
-          return error;
+          return null;
         }
         const user = await User.findOne({
           username: credentials.username,
@@ -28,9 +28,10 @@ export const authOptions = {
         console.log(`${user}logged in successfully`);
 
         if (user) {
+          console.log(`${user.username} logged in successfully`);
           return user;
         } else {
-          return error;
+          return null;
         }
       },
     }),
