@@ -74,7 +74,7 @@ export default function WorksPage() {
         </button>
         <button
           className={styles["button--navigation"]}
-          onClick={() => handleCategorySelect("tattoo")}
+          onClick={() => handleCategorySelect("tattoos")}
           style={
             activeButton === "tattoo" ? { borderBottom: "1px solid black" } : {}
           }
