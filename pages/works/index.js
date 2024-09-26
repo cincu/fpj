@@ -11,9 +11,26 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function WorksPage() {
   const router = useRouter();
-
-  const { data, error, isLoading } = useSWR("/api/works", fetcher);
   const { data: session } = useSession();
+
+  // Step 1: Attempt to retrieve data from localStorage first
+  const [storedData, setStoredData] = useState(null);
+
+  useEffect(() => {
+    const worksData = localStorage.getItem("worksData");
+    if (worksData) {
+      setStoredData(JSON.parse(worksData));
+    }
+  }, []);
+
+  // Step 2: Fetch data with SWR if localStorage data is not available
+  const { data, error, isLoading } = useSWR(
+    !storedData ? "/api/works" : null, // Only fetch if no stored data
+    fetcher
+  );
+
+  // Use stored data if available, otherwise use fetched data
+  const worksData = storedData || data;
 
   const [selectedCategory, setSelectedCategory] = useLocalStorageState(
     "works",
@@ -28,11 +45,11 @@ export default function WorksPage() {
 
   // Memoized filtered images
   const filteredImages = useMemo(() => {
-    if (data) {
-      return data.filter((image) => image.category === selectedCategory);
+    if (worksData) {
+      return worksData.filter((image) => image.category === selectedCategory);
     }
     return [];
-  }, [data, selectedCategory]);
+  }, [worksData, selectedCategory]);
 
   // Add form submit
   async function addWork(id) {
@@ -52,8 +69,9 @@ export default function WorksPage() {
   };
 
   if (error) return <div>Failed to load</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading && !worksData) return <div>Loading...</div>;
   if (!filteredImages.length) return null;
+
   return (
     <div>
       <div className={styles.filterbar}>
