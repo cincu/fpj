@@ -27,7 +27,12 @@ export default function CardsByCategory({ images }) {
             }
             image={image}
           >
-            <img alt={image.title} width={250} src={image.imageUrl} />
+            <img
+              alt={image.title}
+              width={250}
+              src={image.imageUrl}
+              loading="lazy" // Lazy loading attribute
+            />
           </Link>
           <div className={styles["container--admin"]}>
             {session && (

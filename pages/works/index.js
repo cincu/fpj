@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import CardsByCategory from "@/components/CardsByCategory/CardsByCategory";
 import EditForm from "@/components/EditForm/EditForm";
 import { useSession } from "next-auth/react";
@@ -14,9 +14,7 @@ export default function WorksPage() {
 
   const { data, error, isLoading } = useSWR("/api/works", fetcher);
   const { data: session } = useSession();
-  const [filteredImages, setFilteredImages] = useState();
-  console.log("session is:", session);
-  // set the initial state to "graphics"
+
   const [selectedCategory, setSelectedCategory] = useLocalStorageState(
     "works",
     {
@@ -25,10 +23,18 @@ export default function WorksPage() {
   );
   const [activeButton, setActiveButton] = useState(selectedCategory);
 
-  //state for the add form visibility
+  // State for the add form visibility
   const [isFormVisible, setIsFormVisible] = useState(false);
 
-  //add form submit
+  // Memoized filtered images
+  const filteredImages = useMemo(() => {
+    if (data) {
+      return data.filter((image) => image.category === selectedCategory);
+    }
+    return [];
+  }, [data, selectedCategory]);
+
+  // Add form submit
   async function addWork(id) {
     const response = await fetch(`/api/works/${id}`, {
       method: "POST",
@@ -39,25 +45,15 @@ export default function WorksPage() {
       router.push("/works");
     }
   }
-  // state to track the currently selected button
 
-  // Function to handle button clicks and update the selected category
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
     setActiveButton(category);
   };
 
-  useEffect(() => {
-    if (data) {
-      setFilteredImages(
-        data.filter((image) => image.category === selectedCategory)
-      );
-    }
-  }, [data, selectedCategory]);
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
-  if (!filteredImages) return;
+  if (error) return <div>Failed to load</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (!filteredImages.length) return null;
   return (
     <div>
       <div className={styles.filterbar}>
@@ -80,6 +76,26 @@ export default function WorksPage() {
           }
         >
           tattoos
+        </button>
+        <button
+          className={styles["button--navigation"]}
+          onClick={() => handleCategorySelect("tattoos")}
+          style={
+            activeButton === "objects"
+              ? { borderBottom: "1px solid black" }
+              : {}
+          }
+        >
+          objects
+        </button>
+        <button
+          className={styles["button--navigation"]}
+          onClick={() => handleCategorySelect("tattoos")}
+          style={
+            activeButton === "type" ? { borderBottom: "1px solid black" } : {}
+          }
+        >
+          type
         </button>
         {session && (
           <button

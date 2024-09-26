@@ -42,7 +42,8 @@ export default function EditForm({ onSubmit, defaultData, formName }) {
         <option defaultValue={defaultData?.category}>choose</option>
         <option defaultValue="graphics">graphics</option>
         <option defaultValue="tattoos">tattoos</option>
-        <option defaultValue="shop">shop</option>
+        <option defaultValue="objects">objects</option>
+        <option defaultValue="type">type</option>
       </select>
 
       <label htmlFor="dateOfTattoo">date of tattoo:</label>
