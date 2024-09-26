@@ -1,7 +1,23 @@
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/logo_1.png";
+import useSWR from "swr";
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
+
 export default function Home() {
+  const { data, error } = useSWR("/api/works", fetcher);
+
+  useEffect(() => {
+    if (data) {
+      // Storing fetched data in localStorage or sessionStorage
+      localStorage.setItem("worksData", JSON.stringify(data));
+    }
+  }, [data]);
+
+  if (error) return <div>Failed to load data in the background</div>;
+
   return (
     <>
       <div className="logo--container">
