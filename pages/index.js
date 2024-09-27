@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     if (data) {
-      // Storing fetched data in localStorage or sessionStorage
+      console.log("Data fetched on Home page:", data); // Debug log
       localStorage.setItem("worksData", JSON.stringify(data));
     }
   }, [data]);

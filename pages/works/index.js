@@ -19,6 +19,8 @@ export default function WorksPage() {
   useEffect(() => {
     const worksData = localStorage.getItem("worksData");
     if (worksData) {
+      console.log("Data loaded from localStorage:", JSON.parse(worksData)); // Debug log
+
       setStoredData(JSON.parse(worksData));
     }
   }, []);
@@ -97,7 +99,7 @@ export default function WorksPage() {
         </button>
         <button
           className={styles["button--navigation"]}
-          onClick={() => handleCategorySelect("tattoos")}
+          onClick={() => handleCategorySelect("objects")}
           style={
             activeButton === "objects"
               ? { borderBottom: "1px solid black" }
@@ -108,7 +110,7 @@ export default function WorksPage() {
         </button>
         <button
           className={styles["button--navigation"]}
-          onClick={() => handleCategorySelect("tattoos")}
+          onClick={() => handleCategorySelect("type")}
           style={
             activeButton === "type" ? { borderBottom: "1px solid black" } : {}
           }
