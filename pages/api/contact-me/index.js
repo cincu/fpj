@@ -1,23 +1,27 @@
 import nodemailer from "nodemailer";
-// nodemailer = require("nodemailer");
 export default async function handler(request, response) {
   if (request.method === "POST") {
     const { formData } = request.body;
+
+    if (!formData || !formData.fname || !formData.email) {
+      return response.status(400).json({ message: "Invalid form data" });
+    }
+
     const transporter = nodemailer.createTransport({
-      service: "Outlook365",
+      service: "gmail",
       port: 465,
       secure: true,
       auth: {
-        user: "jumisujumisu@outlook.com",
-        pass: "k60x68MqUXsRYRpy5bBOGFCI",
+        user: process.env.SENDER_MAIL,
+        pass: process.env.SENDER_PASS,
       },
     });
+
     await new Promise((resolve, reject) => {
-      // verify connection configuration
       transporter.verify(function (error, success) {
         if (error) {
-          console.log(error);
-          reject(error);
+          console.error("Error verifying transporter: ", error);
+          return reject(error);
         } else {
           console.log("Server is ready to take our messages");
           resolve(success);
@@ -28,7 +32,7 @@ export default async function handler(request, response) {
     const mailOptions = {
       from: process.env.SENDER_MAIL,
       to: process.env.RECEIVER_MAIL,
-      subject: "submitted form data, payment information missing",
+      subject: "Tattoo Appointment Form Submission - Pending Payment",
       html: `
       <h1>Tattoo Appointment Info</h1>
       <p><strong>First Name:</strong> ${formData.fname}</p>
@@ -43,6 +47,7 @@ export default async function handler(request, response) {
       <p><strong>Medical conditions:</strong> ${formData.medicalInfo}</p>
       `,
     };
+
     try {
       await transporter.sendMail(mailOptions);
       response.status(200).json({ message: "email sent successfully" });
@@ -51,6 +56,6 @@ export default async function handler(request, response) {
       response.status(500).json({ message: "email could not be sent" });
     }
   } else {
-    response.status(500).end();
+    response.status(405).json({ message: "Method not allowed" });
   }
 }

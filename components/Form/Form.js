@@ -1,14 +1,62 @@
 import styles from "./Form.module.css";
 import Link from "next/link";
+import DOMPurify from "dompurify"; // To sanitize user input
 
 export default function Form({ onSubmit }) {
+  // Function to sanitize and validate input
+  const sanitizeInput = (input) => {
+    // Remove any HTML tags and trim white spaces
+    return DOMPurify.sanitize(input).trim();
+  };
+
+  // Validation for email
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  // Client-side form validation and sanitization
   async function handleSubmit(event) {
     event.preventDefault();
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit(data);
+
+    // Sanitizing and validating form fields
+    const sanitizedData = {
+      fname: sanitizeInput(data.fname),
+      lname: sanitizeInput(data.lname),
+      email: sanitizeInput(data.email),
+      instagram: sanitizeInput(data.instagram),
+      placement: sanitizeInput(data.placement),
+      tattooSize: sanitizeInput(data.tattooSize),
+      references: sanitizeInput(data.references),
+      tattooBudget: sanitizeInput(data.tattooBudget),
+      bookingDate: sanitizeInput(data.bookingDate),
+      medicalInfo: sanitizeInput(data.medicalInfo),
+    };
+
+    // Basic validation
+    if (!sanitizedData.fname || sanitizedData.fname.length > 50) {
+      alert("First name is required and should be less than 50 characters.");
+      return;
+    }
+
+    if (!validateEmail(sanitizedData.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (!sanitizedData.references || sanitizedData.references.length > 500) {
+      alert("References should be less than 500 characters.");
+      return;
+    }
+
+    // Submit sanitized data to parent or API
+    onSubmit(sanitizedData);
     event.target.reset();
   }
+
   return (
     <div>
       <form
@@ -26,54 +74,66 @@ export default function Form({ onSubmit }) {
           <legend>Contact Information</legend>
           <label htmlFor="first-name">First Name:</label>
           <input
+            className={styles.placeholder}
             id="fname"
             name="fname"
             placeholder="type your first name"
             type="text"
             required
+            maxLength="50" // Limiting input length
           />
           <label htmlFor="last-name">Last Name:</label>
           <input
+            className={styles.placeholder}
             id="lname"
             name="lname"
             placeholder="type your last name"
             type="text"
+            maxLength="50" // Limiting input length
           />
           <label htmlFor="email">E-mail:</label>
           <input
+            className={styles.placeholder}
             id="email"
             name="email"
             placeholder="random@mail.com"
-            type="text"
+            type="email"
             required
           />
           <label htmlFor="instagram">Instagram:</label>
           <input
+            className={styles.placeholder}
             id="instagram"
             name="instagram"
             placeholder="@..."
             type="text"
+            maxLength="50" // Limiting input length
           />
         </fieldset>
+
         <fieldset>
           <legend>Design Ideas</legend>
           <label htmlFor="placement">Placement ideas:</label>
-          <select id="placement" name="placement" required>
-            <option disabled defaultValue="choose">
+          <select
+            className={styles.placeholder}
+            id="placement"
+            name="placement"
+            required
+          >
+            <option disabled value="">
               choose
             </option>
-            <option defaultValue="upper-lower-arm-torso">
-              lower arm, leg, torso
-            </option>
-            <option defaultValue="hands">hand</option>
-            <option defaultValue="foot">foot</option>
-            <option defaultValue="shoulder">shoulder</option>
-            <option defaultValue="skull">skull</option>
-            <option defaultValue="face">face</option>
-            <option defaultValue="other">other</option>
+            <option value="upper-lower-arm-torso">lower arm, leg, torso</option>
+            <option value="hands">hand</option>
+            <option value="foot">foot</option>
+            <option value="shoulder">shoulder</option>
+            <option value="skull">skull</option>
+            <option value="face">face</option>
+            <option value="other">other</option>
           </select>
           <label htmlFor="tattooSize">Approximate size in cm:</label>
           <input
+            className={styles.placeholder}
             type="number"
             id="tattooSize"
             name="tattooSize"
@@ -82,57 +142,51 @@ export default function Form({ onSubmit }) {
             placeholder="cm x cm"
           />
           <label htmlFor="references">References:</label>
-          <div className={styles["div--textarea"]}>
-            <textarea
-              id="references"
-              name="references"
-              rows="6"
-              cols="50"
-              required
-              placeholder="Please be explicit as possible. you are encouraged to reference an existing work as well as a nonexisting idea"
-            />
-          </div>
+          <input
+            className={styles.placeholder}
+            id="references"
+            name="references"
+            placeholder="Please be explicit as possible."
+            type="text"
+            required
+            maxLength="500" // Limiting input length
+          />
         </fieldset>
+
         <fieldset>
           <legend>Appointment Details</legend>
           <label htmlFor="tattooBudget">Maximum Budget:</label>
           <input
+            className={styles.placeholder}
             type="text"
             id="tattooBudget"
             name="tattooBudget"
-            min="100"
-            max="2000"
             placeholder="do not forget indicating the currency"
             required
+            maxLength="10"
           />
-          <label htmlFor="bookingDate">Choose the wish-date:</label>
+          <label htmlFor="bookingDate">Choose the date:</label>
           <input
+            className={styles.placeholder}
             type="date"
             id="bookingDate"
             name="bookingDate"
-            min="01-01-2023"
-            max="31-12-2026"
+            min="2023-01-01"
+            max="2026-12-31"
             required
           />
-          <label htmlFor="references">Health conditions:</label>
-          <div className={styles["div--textarea"]}>
-            <textarea
-              id="medicalInfo"
-              name="medicalInfo"
-              rows="4"
-              cols="50"
-              placeholder="Please indicate if you have any medical conditions, as it may be necessary for me to take appropriate measures to ensure your well-being and mine. Your response will be kept confidential.(e.g. low blood sugar, bloodborne diseases, ..)"
-              required
-            />
-          </div>
+          <label htmlFor="medicalInfo">Health conditions:</label>
+          <input
+            className={styles.placeholder}
+            id="medicalInfo"
+            name="medicalInfo"
+            placeholder="Please indicate if you have any medical conditions."
+            type="text"
+            maxLength="200" // Limiting input length
+            required
+          />
         </fieldset>
-        <label htmlFor="range">How serious are you about this booking?</label>{" "}
-        <input
-          className={styles["input--range"]}
-          type="range"
-          min="0"
-          max="200"
-        />
+
         <button>Submit</button>
         <fieldset>
           <legend>Payment</legend>
@@ -142,7 +196,7 @@ export default function Form({ onSubmit }) {
             </Link>
           </h4>
           <p className={styles["paragraph--payment"]}>
-            Do not forget to reference your name or instagram handle on the
+            Do not forget to reference your name or Instagram handle on the
             transfer.
           </p>
         </fieldset>
