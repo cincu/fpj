@@ -9,3 +9,7 @@
 .input--range {
   accent-color: black;
 }
+
+.placeholder::placeholder {
+  font-family: "Jura", sans-serif;
+}
