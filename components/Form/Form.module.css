@@ -13,3 +13,8 @@
 .placeholder::placeholder {
   font-family: "Jura", sans-serif;
 }
+.boldLinks {
+  font-family: "Jura", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
