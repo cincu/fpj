@@ -66,18 +66,21 @@ export default function Form({ onSubmit }) {
       >
         <h3>Booking</h3>
         <p className={styles["paragraph--payment"]}>
-          Read <Link href="./terms-and-conditions">terms and conditions </Link>
+          Read{" "}
+          <Link className={styles.boldLinks} href="./terms-and-conditions">
+            terms and conditions{" "}
+          </Link>
           before you start filling the form. Fill out this as explicit as
           possible.
         </p>
         <fieldset>
-          <legend>Contact Information</legend>
+          <legend className={styles.boldLinks}>Contact Information</legend>
           <label htmlFor="first-name">First Name:</label>
           <input
             className={styles.placeholder}
             id="fname"
             name="fname"
-            placeholder="type your first name"
+            // placeholder="type your first name"
             type="text"
             required
             maxLength="50" // Limiting input length
@@ -87,16 +90,16 @@ export default function Form({ onSubmit }) {
             className={styles.placeholder}
             id="lname"
             name="lname"
-            placeholder="type your last name"
+            // placeholder="type your last name"
             type="text"
-            maxLength="50" // Limiting input length
+            maxLength="50"
           />
           <label htmlFor="email">E-mail:</label>
           <input
             className={styles.placeholder}
             id="email"
             name="email"
-            placeholder="random@mail.com"
+            // placeholder="random@mail.com"
             type="email"
             required
           />
@@ -105,32 +108,24 @@ export default function Form({ onSubmit }) {
             className={styles.placeholder}
             id="instagram"
             name="instagram"
-            placeholder="@..."
+            // placeholder="@..."
             type="text"
-            maxLength="50" // Limiting input length
+            maxLength="50"
           />
         </fieldset>
 
         <fieldset>
-          <legend>Design Ideas</legend>
-          <label htmlFor="placement">Placement ideas:</label>
-          <select
+          <legend className={styles.boldLinks}>Design Ideas</legend>
+          <label htmlFor="placement">Placement:</label>
+          <input
             className={styles.placeholder}
             id="placement"
             name="placement"
+            placeholder="Please specify body part"
+            type="text"
             required
-          >
-            <option disabled value="">
-              choose
-            </option>
-            <option value="upper-lower-arm-torso">lower arm, leg, torso</option>
-            <option value="hands">hand</option>
-            <option value="foot">foot</option>
-            <option value="shoulder">shoulder</option>
-            <option value="skull">skull</option>
-            <option value="face">face</option>
-            <option value="other">other</option>
-          </select>
+          />
+
           <label htmlFor="tattooSize">Approximate size in cm:</label>
           <input
             className={styles.placeholder}
@@ -146,22 +141,22 @@ export default function Form({ onSubmit }) {
             className={styles.placeholder}
             id="references"
             name="references"
-            placeholder="Please be explicit as possible."
+            placeholder="You can reference the name of the project"
             type="text"
             required
-            maxLength="500" // Limiting input length
+            maxLength="500"
           />
         </fieldset>
 
         <fieldset>
-          <legend>Appointment Details</legend>
-          <label htmlFor="tattooBudget">Maximum Budget:</label>
+          <legend className={styles.boldLinks}>Appointment Details</legend>
+          <label htmlFor="tattooBudget">Budget:</label>
           <input
             className={styles.placeholder}
             type="text"
             id="tattooBudget"
             name="tattooBudget"
-            placeholder="do not forget indicating the currency"
+            placeholder="Please indicate the currency too"
             required
             maxLength="10"
           />
@@ -180,24 +175,27 @@ export default function Form({ onSubmit }) {
             className={styles.placeholder}
             id="medicalInfo"
             name="medicalInfo"
-            placeholder="Please indicate if you have any medical conditions."
+            placeholder="Your health information will be kept strictly confidential"
             type="text"
-            maxLength="200" // Limiting input length
+            maxLength="200"
             required
           />
         </fieldset>
 
         <button>Submit</button>
         <fieldset>
-          <legend>Payment</legend>
+          <legend className={styles.boldLinks}>Payment</legend>
           <h4>
-            <Link href="https://www.paypal.com/paypalme/jumisu4u/100EUR">
-              click here to transfer the deposit after you submit the form
+            <Link
+              className={styles.boldLinks}
+              href="https://www.paypal.com/paypalme/jumisu4u/100EUR"
+            >
+              Click here to transfer the deposit after you submit the form
             </Link>
           </h4>
           <p className={styles["paragraph--payment"]}>
-            Do not forget to reference your name or Instagram handle on the
-            transfer.
+            Please do not forget to reference your name or Instagram handle on
+            the transfer.
           </p>
         </fieldset>
       </form>
