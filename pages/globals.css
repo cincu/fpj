@@ -153,14 +153,13 @@ fieldset {
   width: 100%;
 }
 legend {
-  /* background-color: var(--primary-color);
-  padding: 0.5rem;
-  color: var(--text-contrast-color); */
-  border: 0.5px solid black;
-  /* border-bottom: 1px solid black;
-  border-left: 1px solid black; */
-
-  padding: 0.5rem;
+  border: 0.9px solid black;
+  border-radius: 1.2rem;
+  padding: 0.6rem;
+  text-align: center; /* Center text inside the legend */
+  width: fit-content;
+  margin: 0;
+  margin-bottom: 2rem;
 }
 input,
 select {
@@ -168,12 +167,6 @@ select {
   margin: 0.4rem 0;
   border: none;
   border-bottom: 2px solid black;
-}
-textarea {
-  object-fit: contain;
-  width: 100%;
-  position: relative;
-  height: unset;
 }
 
 input:focus,

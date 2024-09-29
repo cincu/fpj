@@ -184,7 +184,7 @@ export default function Form({ onSubmit }) {
 
         <button>Submit</button>
         <fieldset>
-          <legend className={styles.boldLinks}>Payment</legend>
+          {/* <legend className={styles.boldLinks}>Payment</legend> */}
           <h4>
             <Link
               className={styles.boldLinks}
