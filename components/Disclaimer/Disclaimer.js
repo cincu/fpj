@@ -7,7 +7,7 @@ export default function Disclaimer() {
       <div className={styles.textSection}>
         <h1>About Me</h1>
         <p>
-          Welcome to my creative space, where graphic design and tattoo artistry
+          Welcome to my creative space, where graphic design and tattoo design
           come together with authenticity and purpose. I am driven by a deep
           love for the craft and a commitment to creating original, meaningful
           work that stands out. I am all about breaking away from the
